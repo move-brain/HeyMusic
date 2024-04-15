@@ -1,0 +1,48 @@
+.MusicBac{
+    position: absolute;
+    background-color: white;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    padding:0px 10% ;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1;
+    gap: 50px;
+    :global{
+        .left{
+            height: 100%;
+            padding: 50px 100px 20px 100px;
+            .Name{
+                margin-top: 20px;
+                font-size: x-large;
+                font-weight: 700;
+            }
+            .slider{
+                position: relative;
+            }
+            .singer{
+                font-size: small;
+                margin-bottom: 20px;
+            }
+            .Time{
+                display: flex;
+                justify-content: space-between;
+                padding-top: 10px;
+                span{
+                    font-size: smaller;
+
+                }
+            }
+            .control{
+
+            }
+        }
+
+      
+        .right{
+            height: 100%;
+        }
+    }
+}

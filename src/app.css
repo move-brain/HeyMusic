@@ -1,0 +1,40 @@
+body {
+    font-size: 16px;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5715;
+    color: rgba(0, 0, 0, 0.8);
+    --primary-color: #c62f2f;
+    overflow: hidden;
+}
+img{
+    object-fit:cover
+}
+@media (min-width: 1336px) {
+    body{
+        font-size: 18px;
+    }
+  }
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    image-rendering: -webkit-optimize-contrast;
+    vertical-align: middle;
+}
+
+audio {
+    display: none;
+}
+
+a {
+    
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration:underline
+}

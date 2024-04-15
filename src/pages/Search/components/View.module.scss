@@ -1,0 +1,55 @@
+.view {
+    width: 100%;
+    :global{
+        .arAndalb{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto;
+            gap: 120px;
+            .Item{
+                width: 100%;
+            }
+        }
+        .title{
+           font-size: 22px;
+           font-weight: 700;
+           margin: 20px 0px; 
+        }
+        .songs{
+            width: 100%;
+            .songList{
+                display:grid;
+                grid-template-columns:repeat(4,1fr);
+                grid-template-rows: auto;
+                gap: 0px 20px;
+            }
+            div{
+                text-overflow: ellipsis;
+                white-space: nowrap; /* 禁止换行 */
+                overflow: hidden; 
+            }
+        }
+        .videos{
+            width: 100%;
+            .videosList{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                grid-template-rows: auto;
+                gap: 20px;
+            .title_creater{
+                margin-top: 15px;
+                a{
+                    font-size: 12px;
+                }
+            }
+            .videoTitle{
+                font-weight: 700;
+            }
+            
+            }
+        }
+
+    }
+
+}

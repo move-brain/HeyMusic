@@ -1,0 +1,18 @@
+.discovery {
+    display:grid;
+    gap: 25px;
+    margin-top: 10px;
+    :global {
+        .banner {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+    }
+}
+

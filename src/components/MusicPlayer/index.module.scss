@@ -1,0 +1,23 @@
+.music-player {
+    height: 100%;
+    backdrop-filter: saturate(180%) blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    background-color: hsla(0, 0%, 100%, 0.86);
+    
+}
+.info_button{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    padding: 0px 10vw;
+}
+@media (max-width: 1336px) {
+    .info_button{
+        padding: 0px 5vw;
+
+    }
+  }

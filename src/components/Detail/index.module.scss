@@ -1,0 +1,133 @@
+.detail {
+    display: flex;
+    margin-bottom: 35px;
+    :global {
+        .list-left {
+            width: 25%;
+            max-width: 300px;
+        }
+        .btns{
+            width: 250px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .image > img {
+            height: 240px;
+            width: 240px;
+            padding: 5px;
+            border: 1px solid #bbb;
+        }
+
+        .list-right {
+            padding: 25px 0px;
+            width: 70%;
+            padding-left:85px ;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 25px 0px;
+        }
+
+        .title-playlist,
+        .title-album,
+        .title-song {
+            font-size: 36px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            &::before {
+                color: #c62f2f;
+                font-size: 14px;
+                border: 1px solid #c62f2f;
+                padding: 2px 5px;
+                margin-right: 10px;
+            }
+        }
+
+        // .title-playlist::before {
+        //     content: "歌单";
+        // }
+
+        // .title-album::before {
+        //     content: "专辑";
+        // }
+
+        // .title-song::before {
+        //     content: "单曲";
+        // }
+        .creatoeName{
+            color: black;
+            font-weight: 700;
+        }
+        .Date{
+            font-size: 14px;
+            color: #333;
+        }
+        .creator {
+            display: flex;
+
+            & > a {
+                margin-right: 15px;
+                font-size: 14px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            img {
+                height: 60px;
+                width: 60px;
+                margin-right: 10px;
+                border-radius: 5px;
+            }
+        }
+
+
+        .singer span,a{
+            font-size: "18px";
+            font-weight: 700;
+
+        }
+        .singer span:nth-last-of-type(1) {
+            display: none;
+            font-size: "18px";
+        }
+
+        .lyric {
+            overflow: hidden;
+        }
+        .IconItem:hover{
+            color: #007acc;
+        }
+        .toggle + .lyric {
+            max-height: 300px;
+
+            & + label::after {
+                cursor: pointer;
+                color: #007acc;
+                content: "展开";
+            }
+        }
+
+        .toggle:checked + .lyric {
+            max-height: unset;
+
+            & + label::after {
+                cursor: pointer;
+                color: #007acc;
+                content: "收起";
+            }
+        }
+
+        .description {
+            -webkit-line-clamp: 3;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100px;
+            color: #666;
+            font-size: small;
+            text-overflow: ellipsis;
+        }
+    }
+}

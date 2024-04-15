@@ -1,0 +1,60 @@
+.playlistItem{
+    :global {
+        // .image {
+        //     // backdrop-filter: blur(8px);
+        //     display: block;
+        //     position: relative;
+        //     padding-bottom: 0px;
+        //     overflow: hidden;
+        //     cursor: pointer;
+        //     margin-bottom: 5px;
+        // }
+        // .shadow {
+        //     position: absolute;
+        //     top: 40px;
+        //     height: 100%;
+        //     width: 100%;
+        //     // filter: blur(16px) opacity(0.6);
+        //     transform: scale(0.92, 0.96);
+        //     z-index: -1;
+        //     background-size: cover;
+        //     border-radius: 0.75em;
+        //     aspect-ratio: 1 / 1;
+        //   }
+        // img {
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 100%;
+        // }
+        .play-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            font-size: 25px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #fff;
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s 0.3s;
+            &:hover {
+                box-shadow: 0 0 8px #fff;
+            }
+        }
+        .image:hover .play-button {
+            opacity: 0.8;
+        }
+        .description {
+            display: block;
+            margin-top: 10px;
+            color: #000;
+            font-weight: 700;
+        }
+    }
+}

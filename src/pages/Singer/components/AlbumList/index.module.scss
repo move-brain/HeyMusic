@@ -1,0 +1,20 @@
+.albumList{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: auto;
+    gap: 25px 20px;
+    :global {
+        .listitem  {
+            width: 100%;
+        }
+        .date{
+            font-size: x-small;
+        }
+       
+        .SingerName {
+            color: #000;
+            font-size: 12px;
+        }
+    }
+
+}

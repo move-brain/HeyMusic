@@ -1,0 +1,13 @@
+.intro {
+    :global {
+        .block {
+            margin-bottom: 1em;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        span {
+            white-space: pre-line;
+        }
+    }
+}

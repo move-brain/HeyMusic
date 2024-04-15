@@ -1,0 +1,61 @@
+.playListItem{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    padding: 8px 8px;
+    margin: 15px 0px;
+    border-radius: 8px;
+}
+.playItem{
+    background-color: #eaeffd;
+    &:hover{
+        background-color:#f5f5f7;
+    }
+}
+
+.playing{
+    background-color: #eaeffd;
+    &:hover{
+        background-color:#f5f5f7;
+    }
+}
+
+.left{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.image{
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+.songAndsinger{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    margin-left: 20px;
+}
+.songName{
+    font-size: 18px;
+    font-weight: 700;
+}
+.singer{
+    font-size: 12px;
+    padding: 0px;
+}
+.albumName{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-weight: 700;
+}
+.duration{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 700;
+}

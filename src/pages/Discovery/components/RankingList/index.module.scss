@@ -1,0 +1,16 @@
+.ranking-list{
+    :global {
+        .playlist {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: repeat(2,auto);
+            gap: 10px 20px;
+        }
+        .listitem {
+            width: 100%;
+        }
+        .updateFrequency{
+            font-size: 12px;  
+        }
+    }
+}
