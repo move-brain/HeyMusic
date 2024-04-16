@@ -10,10 +10,10 @@ export default defineConfig({
         port: 4000,
         proxy:{
             "/api": { 
-                   target: "http://localhost:3000",
+                   target: "https://music-q1b1w3j0f-move-brains-projects.vercel.app",
                 //你的需要请求的服务器地址
                    changeOrigin: true, // 允许跨域
-                 secure: false,  //忽略安全证书   
+                    secure: false,  //忽略安全证书   
                    rewrite: (path) => path.replace(/^\/api/, ''), // 重写路径把路径变成空字符,
             },
         },
