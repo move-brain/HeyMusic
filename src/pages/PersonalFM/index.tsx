@@ -6,20 +6,18 @@ import { Loading, Icon } from "@/components";
 import { getFMList, unlike } from "@/apis/personalFM";
 import { getCookie, convertTime } from "@/utils";
 import { resolveSongs } from "@/utils/resolve";
-import {pauseSong} from '@/store/songSlice'
+import { pauseSong } from "@/store/songSlice";
 
 import type { SongItem } from "@/store/songSlice/types";
 import type { MouseEvent } from "react";
 import { useAppDispatch } from "@/store/hook";
 
 function PersonalFM() {
-
-    const dispatch=useAppDispatch()
+    const dispatch = useAppDispatch();
     // 无 token，未登录
     if (!getCookie()) {
         return <div>私人 FM 需要登录使用</div>;
     }
-
 
     // 改变标题
     useEffect(() => {
@@ -46,7 +44,7 @@ function PersonalFM() {
         toggleList.checked && toggleList.click();
 
         // 暂停外部音乐播放器的歌曲
-        dispatch(pauseSong())
+        dispatch(pauseSong());
 
         // 暂存 mediaSession metadata
         let preMetaData: any = null;
@@ -163,7 +161,7 @@ function PersonalFM() {
         const { name, singers, cover, albumName } = playingSong;
         navigator.mediaSession.metadata = new MediaMetadata({
             title: name,
-            artist: singers.map((item:any) => item.name).join("/"),
+            artist: singers.map((item: any) => item.name).join("/"),
             album: albumName,
             artwork: [
                 {

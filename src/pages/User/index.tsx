@@ -1,7 +1,5 @@
-import UserView from './components/View';
+import UserView from "./components/View";
 
 export default () => {
-    return (
-        <UserView />
-    );
-}
+    return <UserView />;
+};

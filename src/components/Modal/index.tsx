@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 import { useLayoutEffect, useRef } from "react";
-import { Portal, Icon, Button } from "@/components";
+import { Portal, Icon } from "@/components";
 import type { ReactNode, MouseEvent } from "react";
 import classNames from "classnames";
 
@@ -73,7 +73,7 @@ function Modal({
                     <div className="modal-content">{children}</div>
                     {!noFooter && (
                         <div className="modal-footer">
-                            <Button type="primary" onClick={onOk}>
+                            {/* <Button type="primary" onClick={onOk}>
                                 确认
                             </Button>
                             <Button
@@ -81,7 +81,7 @@ function Modal({
                                 onClick={onCancel}
                             >
                                 取消
-                            </Button>
+                            </Button> */}
                         </div>
                     )}
                 </div>

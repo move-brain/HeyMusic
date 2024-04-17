@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Modal, Input, Toast, Tabs } from "@/components";
+import { Modal, Toast, Tabs } from "@/components";
 import {
     emailLogin,
     phoneLogin,
@@ -170,7 +170,7 @@ function ModalView({ onCancel, setUserInfo }: Props) {
                 <Tabs.Pane text="账号登录" key="account">
                     <div style={{ padding: "0 16px 16px" }}>
                         <div style={{ marginBottom: 8 }}>账号</div>
-                        <Input
+                        {/* <Input
                             value={username}
                             onChange={setUsername}
                             placeholder="请输入手机号或邮箱"
@@ -182,7 +182,7 @@ function ModalView({ onCancel, setUserInfo }: Props) {
                             onChange={setPassword}
                             placeholder="请输入密码"
                             onPressEnter={onOk}
-                        />
+                        /> */}
                     </div>
                 </Tabs.Pane>
             </Tabs>

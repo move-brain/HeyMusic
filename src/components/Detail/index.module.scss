@@ -6,7 +6,7 @@
             width: 25%;
             max-width: 300px;
         }
-        .btns{
+        .btns {
             width: 250px;
             display: flex;
             justify-content: space-between;
@@ -21,7 +21,7 @@
         .list-right {
             padding: 25px 0px;
             width: 70%;
-            padding-left:85px ;
+            padding-left: 85px;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: auto;
@@ -56,11 +56,11 @@
         // .title-song::before {
         //     content: "单曲";
         // }
-        .creatoeName{
+        .creatoeName {
             color: black;
             font-weight: 700;
         }
-        .Date{
+        .Date {
             font-size: 14px;
             color: #333;
         }
@@ -83,11 +83,10 @@
             }
         }
 
-
-        .singer span,a{
+        .singer span,
+        a {
             font-size: "18px";
             font-weight: 700;
-
         }
         .singer span:nth-last-of-type(1) {
             display: none;
@@ -97,7 +96,7 @@
         .lyric {
             overflow: hidden;
         }
-        .IconItem:hover{
+        .IconItem:hover {
             color: #007acc;
         }
         .toggle + .lyric {

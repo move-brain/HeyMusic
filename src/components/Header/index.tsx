@@ -17,8 +17,6 @@ interface UserInfo {
 
 function Header() {
     const { pathname } = useLocation();
-    console.log(pathname);
-    
     const [userInfo, setUserInfo] = useState<UserInfo>({
         name: null,
         avatar: null,
@@ -55,11 +53,17 @@ function Header() {
 
     return (
         <div className={style.header}>
-            <Navigation/>
+            <Navigation />
             <Tabs currRoute={pathname} />
-            <div className="serAndavatar" >
-            <Search />
-            <Avatar  avatar={userInfo.avatar ? userInfo.avatar:"https://w.wallhaven.cc/full/qz/wallhaven-qzveyd.jpg"} />
+            <div className="serAndavatar">
+                <Search />
+                <Avatar
+                    avatar={
+                        userInfo.avatar
+                            ? userInfo.avatar
+                            : "https://w.wallhaven.cc/full/qz/wallhaven-qzveyd.jpg"
+                    }
+                />
             </div>
             {visible && (
                 <LoginModal

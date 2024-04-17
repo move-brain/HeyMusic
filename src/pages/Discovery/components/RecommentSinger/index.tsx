@@ -10,12 +10,12 @@ export default function RecommentSinger({ data }: Props) {
     const renderList = (list: Props["data"]) => (
         <div className={style.playlist}>
             {list.map(({ id, name, picUrl }) => (
-            <div className={style.listitem} key={id}>
-                <RoundImage cover={picUrl} />
-                <Link className={style.name} to={`/Singer?id=${id}`} >
-              {name}
-            </Link>
-            </div>
+                <div className={style.listitem} key={id}>
+                    <RoundImage cover={picUrl} />
+                    <Link className={style.name} to={`/Singer?id=${id}`}>
+                        {name}
+                    </Link>
+                </div>
             ))}
         </div>
     );
@@ -25,4 +25,3 @@ export default function RecommentSinger({ data }: Props) {
         </div>
     );
 }
-

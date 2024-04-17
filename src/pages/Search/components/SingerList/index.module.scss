@@ -1,19 +1,19 @@
-.singerList{
+.singerList {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 40px;
-    :global{
-        .LinkImage{
+    :global {
+        .LinkImage {
             width: 100%;
         }
-        .Name{
+        .Name {
             display: block;
-           font-size: 16px;
-           margin-top: 8px;
-           font-weight: 700;
-           text-align: center; 
+            font-size: 16px;
+            margin-top: 8px;
+            font-weight: 700;
+            text-align: center;
         }
     }
 }

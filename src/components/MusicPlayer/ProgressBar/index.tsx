@@ -5,17 +5,20 @@ import type { State } from "@/store/songSlice/types";
 interface Props {
     playingItem: State["playingItem"];
     currentTime: number;
-    ChanageDuration:(event:Event,value?:number)=>void,
+    ChanageDuration: (event: Event, value?: number) => void;
 }
 
-function ProgressBar({ playingItem, currentTime , ChanageDuration }: Props) {
+function ProgressBar({ playingItem, currentTime, ChanageDuration }: Props) {
     const { duration } = playingItem;
     return (
-        <div className={style.progressbar} >
-        <SongSlider duration={duration} ChanageDuration={ChanageDuration} currentTime={currentTime} />
+        <div className={style.progressbar}>
+            <SongSlider
+                duration={duration}
+                ChanageDuration={ChanageDuration}
+                currentTime={currentTime}
+            />
         </div>
-    )
+    );
 }
-
 
 export default memo(ProgressBar);

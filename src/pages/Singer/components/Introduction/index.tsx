@@ -1,10 +1,10 @@
-import style from './index.module.scss';
+import style from "./index.module.scss";
 
 interface Props {
     data: any;
 }
 
-function Introduction ({ data }: Props) {
+function Introduction({ data }: Props) {
     const { briefDesc, intro } = data;
     return (
         <div className={style.intro}>
@@ -13,12 +13,12 @@ function Introduction ({ data }: Props) {
                 <span>{briefDesc}</span>
             </div>
             {/* @ts-ignore */}
-            {intro.map(({ ti, txt }, idx) =>
+            {intro.map(({ ti, txt }, idx) => (
                 <div className="block" key={idx}>
                     <h2>{ti}</h2>
                     <span>{txt}</span>
                 </div>
-            )}
+            ))}
         </div>
     );
 }

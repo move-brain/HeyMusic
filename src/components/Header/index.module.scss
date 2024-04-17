@@ -4,11 +4,11 @@
     padding: 0px 10vw;
     height: 100%;
     display: grid;
-    grid-template-columns:1fr 220px 1fr;
+    grid-template-columns: 1fr 220px 1fr;
     grid-template-rows: auto;
 
     :global {
-        .serAndavatar{
+        .serAndavatar {
             width: 100%;
             display: flex;
             justify-content: flex-end;
@@ -104,6 +104,6 @@
 }
 @media (max-width: 1336px) {
     .header {
-      padding: 0 5vw;
+        padding: 0 5vw;
     }
-  }
+}

@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import classNames from "classnames";
 import { Icon } from "@/components";
 import { CSSProperties, useRef } from "react";
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 interface Props {
     className?: string;
@@ -16,7 +16,7 @@ interface Props {
     onPressEnter?: (value: string) => void;
     onSearch?: (value: string) => void;
     onChange?: (value: string) => void;
-    focus?:boolean
+    focus?: boolean;
 }
 
 function Input({
@@ -31,7 +31,7 @@ function Input({
     onChange,
     onSearch,
     onPressEnter,
-    focus
+    focus,
 }: Props) {
     const valueRef = useRef("");
     const doSearch = () => {
@@ -44,21 +44,26 @@ function Input({
     };
 
     return (
-        <div style={{backgroundColor:!focus ? "#e8eaed":"#edf2ff"}} className={styles["input-wrapper"]}>
-            <SearchRoundedIcon sx={{
-                fontSize:'20px',
-                width:"32px",
-                color:!focus ? "#afafb0":"#335eea"
-            }} />
+        <div
+            style={{ backgroundColor: !focus ? "#e8eaed" : "#edf2ff" }}
+            className={styles["input-wrapper"]}
+        >
+            <SearchRoundedIcon
+                sx={{
+                    fontSize: "20px",
+                    width: "32px",
+                    color: !focus ? "#afafb0" : "#335eea",
+                }}
+            />
             <input
                 type={type}
-                className={classNames(
-                    styles.input,
-                    className
-                )}
+                className={classNames(styles.input, className)}
                 placeholder={placeholder}
                 maxLength={maxLength}
-                style={Object.assign({}, style, { backgroundColor: !focus ? "#e8eaed" : "#edf2ff",color:!focus ? "#afafb0" : "#335eea" })}
+                style={Object.assign({}, style, {
+                    backgroundColor: !focus ? "#e8eaed" : "#edf2ff",
+                    color: !focus ? "#afafb0" : "#335eea",
+                })}
                 value={value}
                 onFocus={onFocus}
                 onBlur={onBlur}

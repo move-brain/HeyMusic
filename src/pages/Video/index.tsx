@@ -1,7 +1,5 @@
-import VideoView from './components/View';
+import VideoView from "./components/View";
 
 export default () => {
-    return (
-        <VideoView />
-    );
-}
+    return <VideoView />;
+};

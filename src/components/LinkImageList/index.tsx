@@ -1,14 +1,10 @@
-import style from './index.module.scss';
-import { Link } from 'react-router-dom';
+import style from "./index.module.scss";
+import { Link } from "react-router-dom";
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 function LinkImageList({ children }: any) {
-    return (
-        <div className={style['link-image-list']}>
-            {children}
-        </div>
-    );
+    return <div className={style["link-image-list"]}>{children}</div>;
 }
 
 interface Props {

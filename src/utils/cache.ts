@@ -1,10 +1,10 @@
-import type { MusicItem } from './music';
+import type { MusicItem } from "./music";
 
-const MAX_CACHE_LEN = 30;  // 最大缓存数量
+const MAX_CACHE_LEN = 30; // 最大缓存数量
 
 class MusicCache {
-    private cacheIds: number[];  // 已缓存歌曲的 id 数组
-    private cache: Map<number, MusicItem>;  // 缓存
+    private cacheIds: number[]; // 已缓存歌曲的 id 数组
+    private cache: Map<number, MusicItem>; // 缓存
 
     constructor() {
         this.cacheIds = [];
@@ -42,7 +42,7 @@ class MusicCache {
      */
     del(id: number): void {
         const { cache, cacheIds } = this;
-        const index = cacheIds.findIndex(item => item === id);
+        const index = cacheIds.findIndex((item) => item === id);
         if (index !== -1) {
             cacheIds.splice(index, 1);
             cache.delete(id);

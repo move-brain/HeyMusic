@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import style from "./index.module.scss";
-import { Toast, Button, Select } from "@/components";
+import { Toast, Select } from "@/components";
 import { Loading } from "@/components";
 import { userPlaylist, songlistTracks } from "@/apis/playlist";
 import { getCookie } from "@/utils";
@@ -65,13 +65,13 @@ function CollectSong({ id, onCollect }: Props) {
                 options={options}
                 onChange={(value) => setSelectedId(value)}
             />
-            <Button
+            {/* <Button
                 onClick={handleClick}
                 type="primary"
                 style={{ marginTop: 30, width: 100 }}
             >
                 确认
-            </Button>
+            </Button> */}
         </div>
     );
 }

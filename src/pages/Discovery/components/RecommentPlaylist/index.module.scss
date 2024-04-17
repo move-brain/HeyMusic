@@ -2,8 +2,8 @@
     :global {
         .playlist {
             display: grid;
-            grid-template-columns: repeat(5,1fr);
-            grid-template-rows: repeat(2,auto);
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
             gap: 25px 20px;
         }
 
@@ -33,7 +33,7 @@
             background-size: cover;
             border-radius: 0.75em;
             aspect-ratio: 1 / 1;
-          }
+        }
         img {
             position: absolute;
             width: 100%;
@@ -70,5 +70,4 @@
             font-weight: 700;
         }
     }
-
 }

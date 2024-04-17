@@ -9,8 +9,8 @@ import { songDetail } from "@/apis/song";
 import { resolveSongs } from "@/utils/resolve";
 import music from "@/utils/music";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { playSong,selectSong,setPlaylist } from "@/store/songSlice/index";
-import PlayListItem from './component/PlayListItem'
+import { playSong, selectSong, setPlaylist } from "@/store/songSlice/index";
+import PlayListItem from "./component/PlayListItem";
 import AlbumListItem from "./component/AlbumListItem";
 
 import type { SongItem } from "@/store/songSlice/types";
@@ -19,14 +19,14 @@ interface Props {
     songList?: SongItem[];
     isCreator?: boolean;
     songIds?: number[];
-    album?:boolean
+    album?: boolean;
 }
 
-function SongList({ songList, songIds, isCreator,album }: Props) {
+function SongList({ songList, songIds, isCreator, album }: Props) {
     const playlistId = useQuery("id");
-    const song=useAppSelector(selectSong)
-    const dispatch=useAppDispatch()
-    const {playingItem,playlist}=song
+    const song = useAppSelector(selectSong);
+    const dispatch = useAppDispatch();
+    const { playingItem, playlist } = song;
     const [currentList, setCurrentList] = useState<SongItem[]>(songList || []);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [visible, setVisible] = useState(false);
@@ -42,7 +42,7 @@ function SongList({ songList, songIds, isCreator,album }: Props) {
         // 追加到当前播放列表
         const newList = playlist.slice();
         newList.push(songItem);
-       dispatch(setPlaylist(newList))
+        dispatch(setPlaylist(newList));
     };
 
     //下载
@@ -54,7 +54,7 @@ function SongList({ songList, songIds, isCreator,album }: Props) {
     // 播放指定歌曲
     const handlePlay = (songItem: SongItem) => {
         // 播放
-       dispatch(playSong({item:songItem}))
+        dispatch(playSong({ item: songItem }));
         // 播放列表中已有该歌曲
         if (playlist.find((item) => item.id === songItem.id)) {
             return;
@@ -62,7 +62,7 @@ function SongList({ songList, songIds, isCreator,album }: Props) {
         // 追加到当前播放列表
         const newList = playlist.slice();
         newList.push(songItem);
-        dispatch(setPlaylist(newList))
+        dispatch(setPlaylist(newList));
     };
 
     //收藏歌单中的某首歌
@@ -95,7 +95,7 @@ function SongList({ songList, songIds, isCreator,album }: Props) {
             const ids = songIds!.slice(start, start + 50);
             const songRes = await songDetail(ids);
             console.log(songRes);
-            
+
             setCurrentList(resolveSongs(songRes.songs, "detail"));
         };
 
@@ -110,35 +110,37 @@ function SongList({ songList, songIds, isCreator,album }: Props) {
 
     return (
         <div className={style.songlist}>
-                    {currentList.map((item, index) => {
-                        const {
-                            id,
-                            name,
-                            singers,
-                            duration,
-                            isFree,
-                            albumId,
-                            albumName,
-                            cover,
-                        } = item;
-                        return (
-                        <div key={id} >
-                            {!album ? ( <PlayListItem data={item} />):
-                                 (<AlbumListItem
-                                    Idx={index+1}
-                                    id={id}
-                                    name={name}
-                                    singers={singers}
-                                    duration={duration}
-                                    isFree={isFree}
-                                    albumId={albumId}
-                                    albumName={albumName}
-                                    cover={cover}
-                                    />)}
-                       </div>
- 
-                        );
-                    })}
+            {currentList.map((item, index) => {
+                const {
+                    id,
+                    name,
+                    singers,
+                    duration,
+                    isFree,
+                    albumId,
+                    albumName,
+                    cover,
+                } = item;
+                return (
+                    <div key={id}>
+                        {!album ? (
+                            <PlayListItem data={item} />
+                        ) : (
+                            <AlbumListItem
+                                Idx={index + 1}
+                                id={id}
+                                name={name}
+                                singers={singers}
+                                duration={duration}
+                                isFree={isFree}
+                                albumId={albumId}
+                                albumName={albumName}
+                                cover={cover}
+                            />
+                        )}
+                    </div>
+                );
+            })}
             {/* <Pagination
                 currentPage={currentPage}
                 total={songIds?.length || 0}

@@ -6,18 +6,20 @@
     justify-content: space-around;
     position: relative;
     background-color: hsla(0, 0%, 100%, 0.86);
-    
 }
-.info_button{
+.MusicPlayerBottom {
+    width: 100%;
+    flex: 1;
+}
+.info_button {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     padding: 0px 10vw;
 }
 @media (max-width: 1336px) {
-    .info_button{
+    .info_button {
         padding: 0px 5vw;
-
     }
-  }
+}

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { songComment, songDetail, getLyric } from '@/apis/song';
-import { useQuery } from '@/utils/hooks';
-import { resolveLyric, resolveDetail, resolveSongs } from '@/utils/resolve';
-import View from './components/View';
+import { useState, useEffect } from "react";
+import { songComment, songDetail, getLyric } from "@/apis/song";
+import { useQuery } from "@/utils/hooks";
+import { resolveLyric, resolveDetail, resolveSongs } from "@/utils/resolve";
+import View from "./components/View";
 
-import { SongItem } from '@/store/songSlice/types';
-import type { SongCommentRes } from '@/apis/song';
+import { SongItem } from "@/store/songSlice/types";
+import type { SongCommentRes } from "@/apis/song";
 
 export interface PageState {
     // 详情
@@ -19,7 +19,7 @@ export interface PageState {
 }
 
 function Song() {
-    const id = useQuery('id');
+    const id = useQuery("id");
 
     const [pageState, setPageState] = useState<PageState | null>(null);
 
@@ -34,14 +34,14 @@ function Song() {
             // 详情
             const detail = resolveDetail(detailRes);
             // 歌曲列表
-            const songList = resolveSongs(detailRes.songs, 'detail');
+            const songList = resolveSongs(detailRes.songs, "detail");
             // 歌词
             const lyric = resolveLyric(lyricRes);
             // 评论
             const comment = await songComment(id);
 
             setPageState({ detail, songList, lyric, comment });
-        }
+        };
 
         setPageState(null);
         getData();
@@ -52,16 +52,14 @@ function Song() {
         const title = pageState?.detail?.title;
         if (title) {
             document.title = title;
-        }        
+        }
     }, [pageState]);
 
     if (!id) {
         return <div>歌曲 id 错误</div>;
     }
 
-    return (
-        <View pageState={pageState} />
-    );
+    return <View pageState={pageState} />;
 }
 
 export default Song;

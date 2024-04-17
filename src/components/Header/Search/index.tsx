@@ -3,9 +3,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { Input } from "@/components";
 import { debounce } from "@/utils";
 import { searchSuggest } from "@/apis/search";
-import {FilledInput } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
+import { FilledInput } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 // import './index.css'
 
 type DropdownItemsMap = Record<
@@ -70,16 +70,13 @@ function Search() {
     // 搜索内容变化，获取搜索建议
     useEffect(() => {
         if (searchValue) {
-             //  @ts-ignore
+            //  @ts-ignore
             getSuggest(searchValue);
         }
     }, [searchValue]);
 
-
-
     return (
         <div className="search-container">
-            
             <Input
                 // type="search"
                 focus={focus}
@@ -90,7 +87,7 @@ function Search() {
                 onChange={setSearchValue}
                 onPressEnter={() => {
                     // 按下回车键，跳转到搜索结果页
-                    searchValue&&navigate(`/Search?keyword=${searchValue}`);
+                    searchValue && navigate(`/Search?keyword=${searchValue}`);
                     setSearchValue("");
                     setDropdownItemsMap({});
                 }}
@@ -103,7 +100,7 @@ function Search() {
             // startAdornment: <InputAdornment position="start"><SearchRoundedIcon/></InputAdornment>,
           }}
         /> */}
-        {/* <TextField
+            {/* <TextField
         id="input-with-icon-textfield"
         sx={{
             backgroundColor:"#edf2ff",
@@ -121,7 +118,7 @@ function Search() {
         }}
         variant="filled"
       /> */}
-        {/* <FilledInput
+            {/* <FilledInput
         hiddenLabel
         id="filled-hidden-label-small"
         defaultValue="Small"

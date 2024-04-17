@@ -3,63 +3,62 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     gap: 25px 100px;
-        .item {
-            display: flex;
-            align-items: center;
-            padding:20px;
-            background-color: #f5f5f7;
-            border-radius: 8px;
-        }
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background-color: #f5f5f7;
+        border-radius: 8px;
+    }
 
-        .image {
-            display: block;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        img {
-            border-radius: 8px;
-            height: 60px;
-            width: 60px;
-        }
+    .image {
+        display: block;
+        position: relative;
+        cursor: pointer;
+    }
 
-        .play-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20px;
-            width: 20px;
-            font-size: 12px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.5);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 1px solid #fff;
-            border-radius: 10px;
-            &:hover {
-                box-shadow: 0 0 8px #fff;
-            }
-        }
+    img {
+        border-radius: 8px;
+        height: 60px;
+        width: 60px;
+    }
 
-        .information {
-            margin-left: 20px;
-            display: flex;
-            flex-direction: column;
+    .play-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20px;
+        width: 20px;
+        font-size: 12px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #fff;
+        border-radius: 10px;
+        &:hover {
+            box-shadow: 0 0 8px #fff;
         }
+    }
 
-        .song-title {
-            color: #222;
-        }
+    .information {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .singer {
-            font-size: 12px;
-            color: #bbb;
-            white-space: nowrap;
-            max-width: 240px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    
+    .song-title {
+        color: #222;
+    }
+
+    .singer {
+        font-size: 12px;
+        color: #bbb;
+        white-space: nowrap;
+        max-width: 240px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

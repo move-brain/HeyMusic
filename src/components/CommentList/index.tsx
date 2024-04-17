@@ -3,7 +3,7 @@ import style from "./index.module.scss";
 import { Link } from "react-router-dom";
 import { Icon } from "@/components";
 import { convertDate, replaceHttpToHttps as rp } from "@/utils";
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 
 import type { PlaylistCommentRes } from "@/apis/playlist";
 
@@ -44,9 +44,11 @@ function CommentList({ data }: Props) {
                                         {convertDate(time)}
                                     </span>
                                     <span className="like">
-                                    <FavoriteRoundedIcon sx={{
-                                        marginRight:"10px"
-                                    }} />
+                                        <FavoriteRoundedIcon
+                                            sx={{
+                                                marginRight: "10px",
+                                            }}
+                                        />
                                         ({likedCount})
                                     </span>
                                 </div>

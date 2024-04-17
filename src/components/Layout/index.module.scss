@@ -11,6 +11,7 @@
     }
 
     .middle {
+        background-color: white;
         display: flex;
         position: fixed;
         bottom: 0px;
@@ -43,9 +44,9 @@
     }
     @media (max-width: 1336px) {
         .right {
-          padding: 64px 5vw 96px 5vw;
+            padding: 64px 5vw 96px 5vw;
         }
-      }
+    }
     .bottom {
         position: fixed;
         bottom: 0px;

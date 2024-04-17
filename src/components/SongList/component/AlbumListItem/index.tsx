@@ -1,22 +1,22 @@
-import { memo, useState } from "react"
-import style from './index.module.scss'
-import { Link } from 'react-router-dom'
-import { convertTime } from '@/utils';
+import { memo, useState } from "react";
+import style from "./index.module.scss";
+import { Link } from "react-router-dom";
+import { convertTime } from "@/utils";
 import IconButton from "@mui/material/IconButton";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 
-interface Props{
-    id:number,
-    name:string,
-    singers:Array<{ id: number; name: string;}>,
-    duration:number,
-    isFree:boolean,
-    albumId:number,
-    albumName:string,
-    cover:string
-    Idx:number
+interface Props {
+    id: number;
+    name: string;
+    singers: Array<{ id: number; name: string }>;
+    duration: number;
+    isFree: boolean;
+    albumId: number;
+    albumName: string;
+    cover: string;
+    Idx: number;
 }
-const PlayListItem=({                            
+const PlayListItem = ({
     id,
     name,
     singers,
@@ -25,27 +25,38 @@ const PlayListItem=({
     isFree,
     albumId,
     albumName,
-    cover
-    }:Props)=>{
-        const [isHover,setIsHover]=useState(false)
+    cover,
+}: Props) => {
+    const [isHover, setIsHover] = useState(false);
 
-        return (
-            <div style={{color:!isFree ? "#b8b8b8":"black"}} className={style.AlbumListItem} >
-                <div className={style.left} onMouseEnter={()=>setIsHover(true)} onMouseLeave={()=>setIsHover(false)} >
-                       {
-                        isHover ? (<PlayArrowRounded sx={{
-                            cursor:"pointer",
-                            height:"100%",
-                            fontSize:"32px",
-                            color:"#335eea",
-                        }} />):(<span>{Idx}</span>)
-                       } 
+    return (
+        <div
+            style={{ color: !isFree ? "#b8b8b8" : "black" }}
+            className={style.AlbumListItem}
+        >
+            <div
+                className={style.left}
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
+            >
+                {isHover ? (
+                    <PlayArrowRounded
+                        sx={{
+                            cursor: "pointer",
+                            height: "100%",
+                            fontSize: "32px",
+                            color: "#335eea",
+                        }}
+                    />
+                ) : (
+                    <span>{Idx}</span>
+                )}
 
-                    <div className={style.songName}>{name}</div>
-                </div>
-                <div className={style.duration} >{convertTime(duration)}</div>
+                <div className={style.songName}>{name}</div>
             </div>
-        )
-}
+            <div className={style.duration}>{convertTime(duration)}</div>
+        </div>
+    );
+};
 
-export default memo(PlayListItem)
+export default memo(PlayListItem);

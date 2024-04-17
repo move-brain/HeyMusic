@@ -1,10 +1,9 @@
+import style from "./index.module.scss";
+import PlaylistDetail from "./PlaylistDetail";
+import AlbumDetail from "./AlbumDetail";
+import SongDetail from "./SongDetail";
 
-import style from './index.module.scss';
-import PlaylistDetail from './PlaylistDetail';
-import AlbumDetail from './AlbumDetail';
-import SongDetail from './SongDetail';
-
-import type { SongItem } from '@/store/songSlice/types';
+import type { SongItem } from "@/store/songSlice/types";
 
 interface Props {
     data: {
@@ -12,7 +11,7 @@ interface Props {
         songIds?: number[];
         songList?: SongItem[];
         lyric?: any;
-    }
+    };
 }
 
 function Detail({ data }: Props) {
@@ -21,19 +20,27 @@ function Detail({ data }: Props) {
 
     return (
         <div className={style.detail}>
-            {isPlaylist &&
-                <PlaylistDetail detailData={detail} songList={songList} songIds={songIds} />
-            }
-            {isAlbum &&
+            {isPlaylist && (
+                <PlaylistDetail
+                    detailData={detail}
+                    songList={songList}
+                    songIds={songIds}
+                />
+            )}
+            {isAlbum && (
                 // @ts-ignore
                 <AlbumDetail detailData={detail} songList={songList} />
-            }
-            {isSong &&
-                // @ts-ignore
-                <SongDetail detailData={detail} songData={songList[0]} lyric={lyric} />
-            }
-        </div >
-    )
+            )}
+            {isSong && (
+                <SongDetail
+                    detailData={detail}
+                    // @ts-ignore
+                    songData={songList[0]}
+                    lyric={lyric}
+                />
+            )}
+        </div>
+    );
 }
 
 export default Detail;

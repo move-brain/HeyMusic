@@ -1,5 +1,5 @@
 import style from "./index.module.scss";
-import PlaylistItem from '@/components/PlaylistItem'
+import PlaylistItem from "@/components/PlaylistItem";
 import type { PageState } from "../../index";
 
 interface Props {
@@ -12,7 +12,12 @@ function RecommentPlaylist({ data, onPlayAll }: Props) {
         <div className="playlist">
             {list.map(({ id, name, picUrl }) => (
                 <div className="listitem" key={id}>
-                    <PlaylistItem name={name} id={id} url={picUrl} onPlayAll={onPlayAll}  />
+                    <PlaylistItem
+                        name={name}
+                        id={id}
+                        url={picUrl}
+                        onPlayAll={onPlayAll}
+                    />
                 </div>
             ))}
         </div>

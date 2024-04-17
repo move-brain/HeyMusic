@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { album, albumComment } from '@/apis/album';
-import { useQuery } from '@/utils/hooks';
-import { resolveSongs, resolveDetail } from '@/utils/resolve';
-import View from './components/View';
+import { useEffect, useState } from "react";
+import { album, albumComment } from "@/apis/album";
+import { useQuery } from "@/utils/hooks";
+import { resolveSongs, resolveDetail } from "@/utils/resolve";
+import View from "./components/View";
 
-import type { SongItem } from '@/store/songSlice/types';
-import type { AlbumCommentRes } from '@/apis/album';
+import type { SongItem } from "@/store/songSlice/types";
+import type { AlbumCommentRes } from "@/apis/album";
 
 export interface PageState {
     // 详情
@@ -17,7 +17,7 @@ export interface PageState {
 }
 
 function Album() {
-    const id = useQuery('id');
+    const id = useQuery("id");
 
     const [pageState, setPageState] = useState<PageState | null>(null);
 
@@ -31,12 +31,12 @@ function Album() {
             // 详情
             const detail = resolveDetail(detailRes);
             // 歌曲列表
-            const songList = resolveSongs(detailRes.songs, 'detail');
+            const songList = resolveSongs(detailRes.songs, "detail");
             // 评论
             const comment = await albumComment(id);
 
             setPageState({ detail, songList, comment });
-        }
+        };
 
         setPageState(null);
         getData();
@@ -51,14 +51,10 @@ function Album() {
     }, [pageState]);
 
     if (!id) {
-        return (
-            <div>id错误</div>
-        );
+        return <div>id错误</div>;
     }
 
-    return (
-        <View pageState={pageState} />
-    );
+    return <View pageState={pageState} />;
 }
 
 export default Album;

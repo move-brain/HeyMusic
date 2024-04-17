@@ -1,4 +1,3 @@
-
 import style from "./index.module.scss";
 import { Link } from "react-router-dom";
 import { Icon } from "@/components";
@@ -15,26 +14,36 @@ interface Props {
     type?: string;
 }
 
-
-export default ({id,url,name,onPlayAll,type="playList"}:Props)=>{
-
+export default ({ id, url, name, onPlayAll, type = "playList" }: Props) => {
     const handlePlay = (e: MouseEvent, id: number) => {
         e.preventDefault();
         onPlayAll(id);
     };
 
     return (
-        <div  className={style.playlistItem} >
-            <Link  to={type=='playList' ? `/Playlist?id=${id}`:`/Album?id=${id}`}>
-                <SquareImg cover={rp(url)} />
-            <div
-            className="play-button"
-            onClick={(e) => handlePlay(e, id)}
+        <div className={style.playlistItem}>
+            <Link
+                to={
+                    type == "playList"
+                        ? `/Playlist?id=${id}`
+                        : `/Album?id=${id}`
+                }
             >
-                <Icon type="icon-play" />
-            </div>
+                <SquareImg cover={rp(url)} />
+                <div className="play-button" onClick={(e) => handlePlay(e, id)}>
+                    <Icon type="icon-play" />
+                </div>
             </Link>
-            <Link className="description" to={type=='playList' ? `/Playlist?id=${id}`:`/Album?id=${id}`}>{name}</Link> 
-    </div>
-    )
-}
+            <Link
+                className="description"
+                to={
+                    type == "playList"
+                        ? `/Playlist?id=${id}`
+                        : `/Album?id=${id}`
+                }
+            >
+                {name}
+            </Link>
+        </div>
+    );
+};

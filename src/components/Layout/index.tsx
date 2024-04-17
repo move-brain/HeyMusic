@@ -1,25 +1,35 @@
-import { memo } from 'react';
-import style from './index.module.scss';
-import { Header, MusicPlayer } from '@/components';
-import type { ReactElement } from 'react';
+import { memo } from "react";
+import style from "./index.module.scss";
+import { Header, MusicPlayer } from "@/components";
+import type { ReactElement } from "react";
+import Fade from "@mui/material/Fade";
+import Slide from "@mui/material/Slide";
+import { useAppSelector, useAppDispatch } from "@/store/hook";
+import { selectSong, pauseSong, playSong } from "@/store/songSlice";
 interface Props {
     children: ReactElement;
 }
 
 function Layout({ children }: Props) {
+    const song = useAppSelector(selectSong);
+    const { playingItem } = song;
     return (
         <div className={style.layout}>
             <div className={style.top}>
                 <Header />
             </div>
             <div className={style.middle}>
-                <div className={style.right}>
-                    {children}
-                </div>
+                <Fade in timeout={1000}>
+                    <div className={style.right}>{children}</div>
+                </Fade>
             </div>
-            <div className={style.bottom}>
-                <MusicPlayer />
-            </div>
+            {playingItem.id !== 776039 && (
+                <Slide direction="up" timeout={1500} in={true}>
+                    <div className={style.bottom}>
+                        <MusicPlayer />
+                    </div>
+                </Slide>
+            )}
         </div>
     );
 }

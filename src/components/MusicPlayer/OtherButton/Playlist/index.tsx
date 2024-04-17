@@ -5,11 +5,11 @@ import { convertTime } from "@/utils";
 import { useInterval } from "@/utils/hooks";
 import music from "@/utils/music";
 import cache from "@/utils/cache";
-import {playSong, setPlaylist } from '@/store/songSlice/index'
+import { playSong, setPlaylist } from "@/store/songSlice/index";
 import { useAppDispatch } from "@/store/hook";
-import QueueMusicRoundedIcon from '@mui/icons-material/QueueMusicRounded';
-import IconButton from '@mui/material/IconButton';
-import { Link , useLocation } from 'react-router-dom'
+import QueueMusicRoundedIcon from "@mui/icons-material/QueueMusicRounded";
+import IconButton from "@mui/material/IconButton";
+import { Link, useLocation } from "react-router-dom";
 
 import type { MouseEvent } from "react";
 import type { State } from "@/store/songSlice/types";
@@ -22,12 +22,12 @@ interface Props {
 }
 
 function Playlist({ isPlaying, playlist, playingItem, currentTime }: Props) {
-    const dispatch=useAppDispatch()
+    const dispatch = useAppDispatch();
     const [lyric, setLyric] = useState<null | [string, string, number][]>(
         playingItem.lyric
     );
-    const Location=useLocation()
-    
+    const Location = useLocation();
+
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const activeRef = useRef<HTMLDivElement>(null);
@@ -36,13 +36,13 @@ function Playlist({ isPlaying, playlist, playingItem, currentTime }: Props) {
     // 清空播放列表
     const handleClean = () => {
         cache().delAll();
-        dispatch(setPlaylist([]))
+        dispatch(setPlaylist([]));
     };
 
     // 播放点击的歌曲
     const handlePlaySong = async (index: number) => {
         const clickSong = playlist[index];
-        dispatch(playSong({item:clickSong}))
+        dispatch(playSong({ item: clickSong }));
     };
 
     // 下载歌曲
@@ -63,12 +63,12 @@ function Playlist({ isPlaying, playlist, playingItem, currentTime }: Props) {
         const delItem = newList.splice(index, 1);
         // 缓存删除对应项
         cache().del(delItem[0].id);
-        dispatch(setPlaylist(newList))
+        dispatch(setPlaylist(newList));
 
         // 删除的是正在播放的歌曲
         if (playingIndex === index && isPlaying) {
             const nextSong = newList[index] || newList[newList.length - 1];
-            nextSong && dispatch(playSong({item:nextSong}))
+            nextSong && dispatch(playSong({ item: nextSong }));
         }
     };
 
@@ -172,13 +172,20 @@ function Playlist({ isPlaying, playlist, playingItem, currentTime }: Props) {
     return (
         <div className={style.playlist}>
             <div className="icon" title="播放列表">
-
-            <IconButton>
-                <Link to={Location.pathname!=="/NextList" ? `/NextList` : "/Discovery"} >
-                <QueueMusicRoundedIcon sx={{fontSize:"24px",color:"#000"}} />
-                </Link>
+                <IconButton>
+                    <Link
+                        to={
+                            Location.pathname !== "/NextList"
+                                ? `/NextList`
+                                : "/Discovery"
+                        }
+                    >
+                        <QueueMusicRoundedIcon
+                            sx={{ fontSize: "24px", color: "#000" }}
+                        />
+                    </Link>
                 </IconButton>
-{/* 
+                {/* 
                 <label htmlFor="toggleList">
                     <Icon type="icon-list" />
                     {playlist.length}

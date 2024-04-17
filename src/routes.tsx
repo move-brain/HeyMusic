@@ -1,67 +1,64 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
-const Album=lazy(() => import("./pages/Album"))
-const Discovery=lazy(() => import("./pages/Discovery"))
-const MySongList=lazy(() => import("./pages/MySongList"))
-const NextList=lazy(() => import("./pages/NextList"))
-const PersonalFM=lazy(() => import("./pages/PersonalFM"))
-const Playlist=lazy(() => import("./pages/Playlist"))
-const Search=lazy(() => import("./pages/Search"))
-const Singer=lazy(() => import("./pages/Singer"))
-const Song=lazy(() => import("./pages/Song"))
-const User=lazy(() => import("./pages/User"))
-const Video=lazy(() => import("./pages/Video"))
-
-
-
+const Album = lazy(() => import("./pages/Album"));
+const Discovery = lazy(() => import("./pages/Discovery"));
+const MySongList = lazy(() => import("./pages/MySongList"));
+const NextList = lazy(() => import("./pages/NextList"));
+const PersonalFM = lazy(() => import("./pages/PersonalFM"));
+const Playlist = lazy(() => import("./pages/Playlist"));
+const Search = lazy(() => import("./pages/Search"));
+const Singer = lazy(() => import("./pages/Singer"));
+const Song = lazy(() => import("./pages/Song"));
+const User = lazy(() => import("./pages/User"));
+const Video = lazy(() => import("./pages/Video"));
 
 export default [
     {
         path: "/Album",
-        element: <Album/>
+        element: <Album />,
     },
     {
         path: "/Discovery",
-        element: <Discovery/>
+        element: <Discovery />,
     },
     {
         path: "/MySongList",
-        element: <MySongList/>
+        element: <MySongList />,
     },
     {
         path: "/NextList",
-        element: <NextList/>
+        element: <NextList />,
     },
     {
         path: "/PersonalFM",
-        element: <PersonalFM/>
+        element: <PersonalFM />,
     },
     {
         path: "/Playlist",
-        element: <Playlist/>
+        element: <Playlist />,
     },
     {
         path: "/Search",
-        element: <Search/>
+        element: <Search />,
     },
     {
         path: "/Singer",
-        element: <Singer/>
+        element: <Singer />,
     },
     {
         path: "/Song",
-        element: <Song/>
+        element: <Song />,
     },
     {
         path: "/User",
-        element: <User/>
+        element: <User />,
     },
     {
         path: "/Video",
-        element: <Video/>
+        element: <Video />,
     },
     {
-        path:"/*",
-        element:<Navigate to="/Discovery" />
-    }
+        path: "/*",
+        element: <Navigate to="/Discovery" />,
+    },
 ];

@@ -4,11 +4,11 @@ import { songDetail } from "@/apis/song";
 import type { SongItem } from "@/store/songSlice/types";
 import { resolveSongs } from "@/utils/resolve";
 import cache from "@/utils/cache";
-import { setPlaylist, playSong } from '@/store/songSlice'
+import { setPlaylist, playSong } from "@/store/songSlice";
 import { useAppDispatch } from "@/store/hook";
 import SquareImg from "@/components/SquareImg";
 import PlayButton from "../PlayButton";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 
 interface Props {
@@ -30,9 +30,8 @@ interface Props {
 }
 
 function PlaylistDetail({ detailData, songList, songIds }: Props) {
-
     const { title, cover, creator, tags, description } = detailData;
-    const dispatch=useAppDispatch()
+    const dispatch = useAppDispatch();
     const handlePlayAll = async () => {
         // 免费歌曲列表
         let freeSongList: SongItem[] = [];
@@ -54,13 +53,13 @@ function PlaylistDetail({ detailData, songList, songIds }: Props) {
             }
         }
         cache().delAll();
-        dispatch(setPlaylist(freeSongList))
-        dispatch(playSong({item:freeSongList[0]}))
+        dispatch(setPlaylist(freeSongList));
+        dispatch(playSong({ item: freeSongList[0] }));
     };
 
     return (
-        <> 
-            <div className="list-left" >
+        <>
+            <div className="list-left">
                 <SquareImg isKeep cover={cover} />
             </div>
             <div className="list-right">
@@ -70,17 +69,25 @@ function PlaylistDetail({ detailData, songList, songIds }: Props) {
                         <img src={creator.avatar} />
                     </Link>
                     <div>
-                    <Link to={`/User?id=${creator.id}`} className="creatoeName" >{creator.name}</Link>
-                        <div className="Date" >
-                        {new Date(creator.createTime)
-                        .toLocaleDateString()
-                        .replace(/\//g, "-")}
-                    创建</div>
+                        <Link
+                            to={`/User?id=${creator.id}`}
+                            className="creatoeName"
+                        >
+                            {creator.name}
+                        </Link>
+                        <div className="Date">
+                            {new Date(creator.createTime)
+                                .toLocaleDateString()
+                                .replace(/\//g, "-")}
+                            创建
+                        </div>
                     </div>
                 </div>
-               {description&&(<div className="description">{description}</div>)} 
+                {description && (
+                    <div className="description">{description}</div>
+                )}
                 <PlayButton ClickButton={handlePlayAll} text="播放">
-                    <PlayArrowRounded/>
+                    <PlayArrowRounded />
                 </PlayButton>
             </div>
         </>

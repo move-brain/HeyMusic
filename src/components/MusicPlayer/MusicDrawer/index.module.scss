@@ -1,47 +1,44 @@
-.MusicBac{
+.MusicBac {
     position: absolute;
     background-color: white;
     top: 0px;
     bottom: 0px;
     right: 0px;
     left: 0px;
-    padding:0px 10% ;
+    padding: 0px 10%;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1;
     gap: 50px;
-    :global{
-        .left{
+    :global {
+        .left {
             height: 100%;
             padding: 50px 100px 20px 100px;
-            .Name{
+            .Name {
                 margin-top: 20px;
                 font-size: x-large;
                 font-weight: 700;
             }
-            .slider{
+            .slider {
                 position: relative;
             }
-            .singer{
+            .singer {
                 font-size: small;
                 margin-bottom: 20px;
             }
-            .Time{
+            .Time {
                 display: flex;
                 justify-content: space-between;
                 padding-top: 10px;
-                span{
+                span {
                     font-size: smaller;
-
                 }
             }
-            .control{
-
+            .control {
             }
         }
 
-      
-        .right{
+        .right {
             height: 100%;
         }
     }

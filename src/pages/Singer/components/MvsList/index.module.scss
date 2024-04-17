@@ -1,15 +1,15 @@
-.MvsList{
+.MvsList {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     gap: 20px;
-    :global{
-        .Item{
-            .name{
+    :global {
+        .Item {
+            .name {
                 font-weight: 700;
             }
-            .date{
+            .date {
                 font-size: x-small;
             }
         }

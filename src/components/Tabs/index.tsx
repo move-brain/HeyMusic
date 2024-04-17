@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react';
-import style from './index.module.scss';
+import React, { useMemo, useState } from "react";
+import style from "./index.module.scss";
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 interface TabsProps {
     children: ReactNode;
@@ -16,7 +16,7 @@ function Tabs({ children, onChange }: TabsProps) {
                 array.push({
                     key: child.key,
                     text: child.props.text,
-                    element: child
+                    element: child,
                 });
             }
         });
@@ -28,10 +28,12 @@ function Tabs({ children, onChange }: TabsProps) {
     return (
         <>
             <div className={style.tabs}>
-                {childrenArray.map(({ key, text }) =>
+                {childrenArray.map(({ key, text }) => (
                     <div
                         key={key}
-                        className={activeKey === key ? style['tab-active'] : style.tab}
+                        className={
+                            activeKey === key ? style["tab-active"] : style.tab
+                        }
                         onClick={() => {
                             setActiveKey(key);
                             onChange && onChange(key);
@@ -39,9 +41,9 @@ function Tabs({ children, onChange }: TabsProps) {
                     >
                         {text}
                     </div>
-                )}
+                ))}
             </div>
-            {childrenArray.filter(item => item.key === activeKey)[0].element}
+            {childrenArray.filter((item) => item.key === activeKey)[0].element}
         </>
     );
 }

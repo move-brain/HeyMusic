@@ -2,8 +2,8 @@
     :global {
         .playlist {
             display: grid;
-            grid-template-columns: repeat(5,1fr);
-            grid-template-rows: repeat(2,auto);
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
             gap: 25px 20px;
         }
 
@@ -13,11 +13,10 @@
 
         // 让图片宽高相同
         // padding 使用百分比是相对于父 width 的
-       
+
         .SingerName {
             color: #000;
             font-size: 12px;
         }
     }
-
 }

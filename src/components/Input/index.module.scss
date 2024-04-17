@@ -1,42 +1,40 @@
 .input-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  background-color: #e8eaed;
-  border-radius: 8px;
-  width: 250px;
-  overflow: hidden;
-} 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    background-color: #e8eaed;
+    border-radius: 8px;
+    width: 250px;
+    overflow: hidden;
+}
 
 .input {
-  padding: 0 0px;
-  height: 32px;
-  line-height: 32px;
-  font-size: 14px;
-  border: none;
-  background-color: #e8eaed;
-  font-weight: 700;
-  // border-radius: 8px;
-  outline: 0;
-  // &:focus {
-  //   // box-shadow: 0 0 2px 2px rgba(171, 59, 59, 0.2);
-  // }
-  &:focus
-  &::placeholder {
+    padding: 0 0px;
+    height: 32px;
+    line-height: 32px;
     font-size: 14px;
-    color: #335eea;
+    border: none;
+    background-color: #e8eaed;
     font-weight: 700;
-  }
+    // border-radius: 8px;
+    outline: 0;
+    // &:focus {
+    //   // box-shadow: 0 0 2px 2px rgba(171, 59, 59, 0.2);
+    // }
+    &:focus &::placeholder {
+        font-size: 14px;
+        color: #335eea;
+        font-weight: 700;
+    }
 
-  &::-webkit-input-placeholder {
-    font-size: 14px;
+    &::-webkit-input-placeholder {
+        font-size: 14px;
+    }
 
-  }
-
-  &::-moz-placeholder {
-    font-size: 14px;
-  }
+    &::-moz-placeholder {
+        font-size: 14px;
+    }
 }
 
 // .with-icon {

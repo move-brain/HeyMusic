@@ -1,5 +1,5 @@
 import style from "./index.module.scss";
-import PlaylistItem from '@/components/PlaylistItem'
+import PlaylistItem from "@/components/PlaylistItem";
 import type { PageState } from "../../index";
 
 interface Props {
@@ -12,7 +12,12 @@ function HuaLiu({ data, onPlayAll }: Props) {
         <div className="playlist">
             {list.map(({ id, name, coverImgUrl }) => (
                 <div className="listitem" key={id}>
-                    <PlaylistItem name={name} id={id} url={coverImgUrl} onPlayAll={onPlayAll}  />
+                    <PlaylistItem
+                        name={name}
+                        id={id}
+                        url={coverImgUrl}
+                        onPlayAll={onPlayAll}
+                    />
                 </div>
             ))}
         </div>

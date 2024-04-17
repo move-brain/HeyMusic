@@ -1,28 +1,28 @@
-.ImgePar{
+.ImgePar {
     width: 100%;
     position: relative;
     padding-bottom: 100%;
     cursor: pointer;
 }
-.ImgePar>img{
+.ImgePar > img {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
-.ImgePar>img:hover{
-  transform: scale(1.01, 1.01);
-  transition: all 0.2s ease;
+.ImgePar > img:hover {
+    transform: scale(1.01, 1.01);
+    transition: all 0.2s ease;
 }
-.shaow{
-  position: absolute;
-  top: 14px;
-  height: 100%;
-  width: 100%;
-  filter: blur(16px) opacity(0.6);
-  transform: scale(1.02);
-  z-index: -1;
-  background-size: cover;
-  border-radius: 0.75em;
-  aspect-ratio: 1 / 1;
+.shaow {
+    position: absolute;
+    top: 14px;
+    height: 100%;
+    width: 100%;
+    filter: blur(16px) opacity(0.6);
+    transform: scale(1.02);
+    z-index: -1;
+    background-size: cover;
+    border-radius: 0.75em;
+    aspect-ratio: 1 / 1;
 }

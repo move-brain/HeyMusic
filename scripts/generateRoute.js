@@ -11,24 +11,26 @@ let routes = "export default [";
 
 // 深度优先搜索
 const dfs = (dir) => {
-    const dirPath = path.join(__dirname, dir);
-    const files = fs.readdirSync(dirPath, { withFileTypes: true });
-    files.forEach((file) => {
-        const fileName = file.name;
-        if (file.isDirectory()) {
-            // 跳过指定名称的文件夹
-            if (ignoreDirNames.includes(fileName.toLocaleLowerCase())) {
-                return;
-            }
-            dfs(`${dir}/${fileName}`);
-        } else if (file.isFile()) {
-            if (fileName.toLocaleLowerCase() === "index.tsx") {
-                routes += `\n${tab()}{\n`;
-                routes += `${tab(2)}path: "${dir.slice(12) || "/"}",\n`;
-                routes += `${tab(2)}element: () => import("./pages${dir.slice(12)}")\n${tab()}},`;
-            }
-        }
-    });
+  const dirPath = path.join(__dirname, dir);
+  const files = fs.readdirSync(dirPath, { withFileTypes: true });
+  files.forEach((file) => {
+    const fileName = file.name;
+    if (file.isDirectory()) {
+      // 跳过指定名称的文件夹
+      if (ignoreDirNames.includes(fileName.toLocaleLowerCase())) {
+        return;
+      }
+      dfs(`${dir}/${fileName}`);
+    } else if (file.isFile()) {
+      if (fileName.toLocaleLowerCase() === "index.tsx") {
+        routes += `\n${tab()}{\n`;
+        routes += `${tab(2)}path: "${dir.slice(12) || "/"}",\n`;
+        routes += `${tab(2)}element: () => import("./pages${dir.slice(
+          12
+        )}")\n${tab()}},`;
+      }
+    }
+  });
 };
 
 dfs("../src/pages");

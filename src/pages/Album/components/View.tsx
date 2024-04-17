@@ -1,7 +1,7 @@
-import style from './View.module.scss';
-import { Detail, SongList, CommentList, Loading } from '@/components';
+import style from "./View.module.scss";
+import { Detail, SongList, CommentList, Loading } from "@/components";
 
-import type { PageState } from '../index';
+import type { PageState } from "../index";
 
 interface Props {
     pageState: PageState | null;
