@@ -5,7 +5,7 @@ export default defineConfig({
     server: {
         proxy: {
             "/api": {
-                target: "https://music-q1b1w3j0f-move-brains-projects.vercel.app",
+                target: "https://api.izxl.asia",
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/api/, ""),
