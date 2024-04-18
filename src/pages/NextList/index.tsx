@@ -5,8 +5,6 @@ import PlaylistItem from "@/components/SongList/component/PlayListItem";
 import style from "./index.module.scss";
 const Nextlist = () => {
     const { playlist, playingItem } = useAppSelector(selectSong);
-    const { id, name, singers, duration, isFree, albumId, albumName, cover } =
-        playingItem;
     const List = playlist.filter((item) => item.id !== playingItem.id);
     return (
         <div className={style.nextList}>

@@ -1,9 +1,7 @@
 import { Fragment, useState, useEffect, memo } from "react";
 import style from "./index.module.scss";
 import { Loading, Pagination, Icon, Toast, Modal } from "@/components";
-import { Link } from "react-router-dom";
 import { songlistTracks } from "@/apis/playlist";
-import { convertTime } from "@/utils";
 import { useQuery } from "@/utils/hooks";
 import { songDetail } from "@/apis/song";
 import { resolveSongs } from "@/utils/resolve";

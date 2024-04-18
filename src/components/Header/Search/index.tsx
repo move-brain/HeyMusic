@@ -3,9 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { Input } from "@/components";
 import { debounce } from "@/utils";
 import { searchSuggest } from "@/apis/search";
-import { FilledInput } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 // import './index.css'
 
 type DropdownItemsMap = Record<

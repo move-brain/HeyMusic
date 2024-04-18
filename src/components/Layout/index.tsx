@@ -4,15 +4,15 @@ import { Header, MusicPlayer } from "@/components";
 import type { ReactElement } from "react";
 import Fade from "@mui/material/Fade";
 import Slide from "@mui/material/Slide";
-import { useAppSelector, useAppDispatch } from "@/store/hook";
-import { selectSong, pauseSong, playSong } from "@/store/songSlice";
+import { useAppSelector } from "@/store/hook";
+import { selectSong } from "@/store/songSlice";
 interface Props {
     children: ReactElement;
 }
 
 function Layout({ children }: Props) {
     const song = useAppSelector(selectSong);
-    const { playingItem } = song;
+    const { playingItem, playlist } = song;
     return (
         <div className={style.layout}>
             <div className={style.top}>
@@ -23,7 +23,7 @@ function Layout({ children }: Props) {
                     <div className={style.right}>{children}</div>
                 </Fade>
             </div>
-            {playingItem.id !== 776039 && (
+            {playingItem.id !== 776039 && playlist.length == 1 && (
                 <Slide direction="up" timeout={1500} in={true}>
                     <div className={style.bottom}>
                         <MusicPlayer />

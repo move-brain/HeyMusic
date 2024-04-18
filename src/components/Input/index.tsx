@@ -1,6 +1,5 @@
 import styles from "./index.module.scss";
 import classNames from "classnames";
-import { Icon } from "@/components";
 import { CSSProperties, useRef } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 

@@ -1,6 +1,5 @@
 import { useState, useEffect, memo } from "react";
 import style from "./index.module.scss";
-import { Icon } from "@/components";
 import { getCookie } from "@/utils";
 import { logout } from "@/apis/login";
 import LoginModal from "./LoginModal";

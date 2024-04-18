@@ -1,7 +1,6 @@
 import { memo } from "react";
 import KeyboardDoubleArrowUpRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowUpRounded";
 import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
-import style from "./index.module.scss";
 import { IconButton } from "@mui/material";
 interface Props {
     type?: "B" | "T";
