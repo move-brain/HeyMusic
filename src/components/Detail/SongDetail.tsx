@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import music from "@/utils/music";
+import { replaceHttpToHttps as rp } from "@/utils";
 import {
     playSong,
     setPlaylist,
@@ -61,7 +62,7 @@ function SongDetail({ detailData, songData, lyric }: Props) {
     return (
         <>
             <div className="list-left">
-                <SquareImg isKeep cover={cover} />
+                <SquareImg isKeep cover={`${rp(cover)}?param=400y400`} />
             </div>
             <div className="list-right">
                 <div className="title-song">{title}</div>

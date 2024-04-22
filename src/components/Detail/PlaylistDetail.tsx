@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { songDetail } from "@/apis/song";
+import { replaceHttpToHttps as rp } from "@/utils";
 
 import type { SongItem } from "@/store/songSlice/types";
 import { resolveSongs } from "@/utils/resolve";
@@ -60,13 +61,13 @@ function PlaylistDetail({ detailData, songList, songIds }: Props) {
     return (
         <>
             <div className="list-left">
-                <SquareImg isKeep cover={cover} />
+                <SquareImg isKeep cover={`${rp(cover)}?param=400y400`} />
             </div>
             <div className="list-right">
                 <div className="title-playlist">{title}</div>
                 <div className="creator">
                     <Link to={`/User?id=${creator.id}`}>
-                        <img src={creator.avatar} />
+                        <img src={`${rp(creator.avatar)}?param=100y100`} />
                     </Link>
                     <div>
                         <Link

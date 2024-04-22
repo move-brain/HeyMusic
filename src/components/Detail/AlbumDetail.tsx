@@ -4,7 +4,7 @@ import { setPlaylist, playSong, commitPlaying } from "@/store/songSlice";
 import SquareImg from "@/components/SquareImg";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 import PlayButton from "../PlayButton";
-
+import { replaceHttpToHttps as rp } from "@/utils";
 import type { SongItem } from "@/store/songSlice/types";
 import { useAppDispatch } from "@/store/hook";
 
@@ -34,7 +34,7 @@ function AlbumDetail({ detailData, songList }: Props) {
     return (
         <>
             <div className="list-left">
-                <SquareImg isKeep cover={cover} />
+                <SquareImg isKeep cover={`${rp(cover)}?param=400y400`} />
             </div>
             <div className="list-right">
                 <div className="title-album">{title}</div>

@@ -28,6 +28,7 @@ function ProgressBar({
                 <LinearProgress
                     sx={{
                         height: "2.5px",
+                        color: "#335eea",
                     }}
                 />
             ) : (
