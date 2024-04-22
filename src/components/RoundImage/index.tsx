@@ -6,7 +6,7 @@ interface Props {
 }
 const RoundImg = ({ cover }: Props) => {
     const [isHovered, setIsHovered] = useState(false);
-    const [iscomplete, setIscomplete] = useState(true);
+    const [iscomplete, setIscomplete] = useState(false);
     const backImage = {
         backgroundImage: `url(${cover})`,
         borderRadius: "50%",
@@ -14,7 +14,7 @@ const RoundImg = ({ cover }: Props) => {
     return (
         <div
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             className={style.ImgePar}
         >
             {!iscomplete && (

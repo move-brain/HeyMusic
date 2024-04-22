@@ -11,7 +11,7 @@ export default function RecommentSinger({ data }: Props) {
         <div className={style.playlist}>
             {list.map(({ id, name, picUrl }) => (
                 <div className={style.listitem} key={id}>
-                    <RoundImage cover={picUrl} />
+                    <RoundImage cover={`${rp(picUrl)}?param=200y200`} />
                     <Link className={style.name} to={`/Singer?id=${id}`}>
                         {name}
                     </Link>

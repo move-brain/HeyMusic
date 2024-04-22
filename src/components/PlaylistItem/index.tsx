@@ -31,7 +31,7 @@ export default ({ id, url, name, onPlayAll, type = "playList" }: Props) => {
                         : `/Album?id=${id}`
                 }
             >
-                <SquareImg cover={rp(url)} />
+                <SquareImg cover={`${rp(url)}?param=400y400`} />
                 <div className="play-button" onClick={(e) => handlePlay(e, id)}>
                     <IconButton>
                         <PlayArrowRoundedIcon
