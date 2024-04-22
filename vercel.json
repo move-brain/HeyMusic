@@ -3,6 +3,7 @@
         {
             "source": "/api/:path*",
             "destination": "https://api.izxl.asia/:path*"
-        }
+        },
+        { "source": "/:path*", "destination": "/index.html" }
     ]
 }
