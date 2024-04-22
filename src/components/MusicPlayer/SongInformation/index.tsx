@@ -2,7 +2,7 @@ import { memo, useMemo } from "react";
 import style from "./index.module.scss";
 import { Link } from "react-router-dom";
 import { convertTime } from "@/utils";
-
+import { replaceHttpToHttps as rp } from "@/utils";
 import type { State } from "@/store/songSlice/types";
 
 interface Props {
@@ -13,7 +13,7 @@ function SongInformation({ playingItem }: Props) {
     const { id, name, cover, singers, duration } = playingItem;
     return (
         <div className={style.container}>
-            <img src={cover} />
+            <img src={`${rp(cover)}?param=100y100`} />
             <div className="information">
                 <Link className="songName" to={`/Song?id=${id}`}>
                     {name}

@@ -23,7 +23,7 @@ function Layout({ children }: Props) {
                     <div className={style.right}>{children}</div>
                 </Fade>
             </div>
-            {playingItem.id !== 776039 && playlist.length == 1 && (
+            {playingItem.id !== 776039 && playlist.length !== 1 && (
                 <Slide direction="up" timeout={1500} in={true}>
                     <div className={style.bottom}>
                         <MusicPlayer />

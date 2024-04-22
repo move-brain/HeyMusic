@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect, memo } from "react";
 import style from "./index.module.scss";
-import { Loading, Pagination, Icon, Toast, Modal } from "@/components";
+import Loading from "@/components/Loading";
+import Toast from "@/components/Toast";
 import { songlistTracks } from "@/apis/playlist";
 import { useQuery } from "@/utils/hooks";
 import { songDetail } from "@/apis/song";
@@ -10,7 +11,6 @@ import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { playSong, selectSong, setPlaylist } from "@/store/songSlice/index";
 import PlayListItem from "./component/PlayListItem";
 import AlbumListItem from "./component/AlbumListItem";
-
 import type { SongItem } from "@/store/songSlice/types";
 
 interface Props {

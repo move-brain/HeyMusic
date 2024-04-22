@@ -1,7 +1,12 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import music from "@/utils/music";
-import { playSong, setPlaylist, selectSong } from "@/store/songSlice";
+import {
+    playSong,
+    setPlaylist,
+    selectSong,
+    commitPlaying,
+} from "@/store/songSlice";
 import type { SongItem } from "@/store/songSlice/types";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
 import SquareImg from "@/components/SquareImg";
@@ -39,7 +44,7 @@ function SongDetail({ detailData, songData, lyric }: Props) {
             newList.push(songData);
             dispatch(setPlaylist(newList));
         }
-
+        dispatch(commitPlaying(songData));
         dispatch(playSong({ item: songData }));
     };
 

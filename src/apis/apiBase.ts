@@ -4,8 +4,8 @@ import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 
 // 服务器地址
-const baseUrl = "/api";
-// const baseUrl = "http://45.207.8.158/api";
+// @ts-ignore
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 //请求携带的参数
 const baseParams: AxiosRequestConfig = {

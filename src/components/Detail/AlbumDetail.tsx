@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { setPlaylist, playSong } from "@/store/songSlice";
+import { setPlaylist, playSong, commitPlaying } from "@/store/songSlice";
 import SquareImg from "@/components/SquareImg";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 import PlayButton from "../PlayButton";
@@ -27,6 +27,7 @@ function AlbumDetail({ detailData, songList }: Props) {
     const handlePlayAll = async () => {
         const firstSong = songList[0];
         dispatch(playSong({ item: firstSong }));
+        dispatch(commitPlaying(firstSong));
         dispatch(setPlaylist(songList));
     };
 

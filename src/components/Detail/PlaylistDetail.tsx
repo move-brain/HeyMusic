@@ -4,11 +4,10 @@ import { songDetail } from "@/apis/song";
 import type { SongItem } from "@/store/songSlice/types";
 import { resolveSongs } from "@/utils/resolve";
 import cache from "@/utils/cache";
-import { setPlaylist, playSong } from "@/store/songSlice";
+import { setPlaylist, playSong, commitPlaying } from "@/store/songSlice";
 import { useAppDispatch } from "@/store/hook";
 import SquareImg from "@/components/SquareImg";
 import PlayButton from "../PlayButton";
-import Button from "@mui/material/Button";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 
 interface Props {
@@ -54,6 +53,7 @@ function PlaylistDetail({ detailData, songList, songIds }: Props) {
         }
         cache().delAll();
         dispatch(setPlaylist(freeSongList));
+        dispatch(commitPlaying(freeSongList[0]));
         dispatch(playSong({ item: freeSongList[0] }));
     };
 

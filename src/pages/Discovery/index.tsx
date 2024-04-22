@@ -10,7 +10,7 @@ import {
 } from "@/apis/discovery";
 import { songDetail } from "@/apis/song";
 import { playlistDetail } from "@/apis/playlist";
-import { setPlaylist, playSong } from "@/store/songSlice";
+import { setPlaylist, playSong, commitPlaying } from "@/store/songSlice";
 import { useAppDispatch } from "@/store/hook";
 import type {
     RecommendPlaylistRes,
@@ -51,6 +51,7 @@ function Discovery() {
         // 播放第一首歌曲
 
         dispatch(setPlaylist(freeSongList));
+        dispatch(commitPlaying(songList[0]));
         dispatch(playSong({ item: songList[0] }));
     };
 
@@ -73,7 +74,6 @@ function Discovery() {
             const newAlbum = await newAlbumlist();
             //热门歌手
             const Singers = await hotSinger();
-            console.log(Singers);
 
             setPageState({
                 recommendPlaylist: playlistRes.result.slice(0, 10),

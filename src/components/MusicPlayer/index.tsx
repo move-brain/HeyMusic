@@ -57,6 +57,7 @@ function MusicPlayer() {
             <ProgressBar
                 playingItem={playingItem}
                 currentTime={currentTime}
+                isLoading={isLoading}
                 ChanageDuration={ChanageDuration}
             />
             <div className={style.MusicPlayerBottom}>

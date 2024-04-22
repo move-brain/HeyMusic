@@ -92,6 +92,11 @@ const songSlice = createSlice({
         setPlayMode: (state, action: PayloadAction<State["playMode"]>) => {
             state.playMode = action.payload;
         },
+        commitPlaying: (state, action: PayloadAction<SongItem>) => {
+            console.log(action.payload);
+            //@ts-ignore
+            state.playingItem = action.payload;
+        },
     },
 
     extraReducers: (builder) => {
@@ -129,6 +134,7 @@ const songSlice = createSlice({
             });
     },
 });
-export const { setPlaylist, setPlayMode, pauseSong } = songSlice.actions;
+export const { setPlaylist, setPlayMode, pauseSong, commitPlaying } =
+    songSlice.actions;
 export const selectSong = (state: RootState) => state.song;
 export default songSlice.reducer;

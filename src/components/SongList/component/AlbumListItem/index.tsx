@@ -1,8 +1,6 @@
 import { memo, useState } from "react";
 import style from "./index.module.scss";
-import { Link } from "react-router-dom";
 import { convertTime } from "@/utils";
-import IconButton from "@mui/material/IconButton";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 
 interface Props {

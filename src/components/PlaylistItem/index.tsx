@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Icon } from "@/components";
 import { replaceHttpToHttps as rp } from "@/utils";
 import SquareImg from "@/components/SquareImg";
-
+import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import { IconButton } from "@mui/material";
 import type { MouseEvent } from "react";
 
 interface Props {
@@ -23,6 +24,7 @@ export default ({ id, url, name, onPlayAll, type = "playList" }: Props) => {
     return (
         <div className={style.playlistItem}>
             <Link
+                style={{ position: "relative" }}
                 to={
                     type == "playList"
                         ? `/Playlist?id=${id}`
@@ -31,7 +33,13 @@ export default ({ id, url, name, onPlayAll, type = "playList" }: Props) => {
             >
                 <SquareImg cover={rp(url)} />
                 <div className="play-button" onClick={(e) => handlePlay(e, id)}>
-                    <Icon type="icon-play" />
+                    <IconButton>
+                        <PlayArrowRoundedIcon
+                            sx={{
+                                color: "#fff",
+                            }}
+                        />
+                    </IconButton>
                 </div>
             </Link>
             <Link
