@@ -11,14 +11,14 @@ interface Props {
     id: number;
     name: string;
     url: string;
-    onPlayAll: (id: number) => Promise<void>;
+    onPlayAll: (id: number, type?: string) => Promise<void>;
     type?: string;
 }
 
 export default ({ id, url, name, onPlayAll, type = "playList" }: Props) => {
     const handlePlay = (e: MouseEvent, id: number) => {
         e.preventDefault();
-        onPlayAll(id);
+        onPlayAll(id, type);
     };
 
     return (
@@ -31,7 +31,7 @@ export default ({ id, url, name, onPlayAll, type = "playList" }: Props) => {
                         : `/Album?id=${id}`
                 }
             >
-                <SquareImg cover={`${rp(url)}?param=400y400`} />
+                <SquareImg cover={url} />
                 <div className="play-button" onClick={(e) => handlePlay(e, id)}>
                     <IconButton>
                         <PlayArrowRoundedIcon

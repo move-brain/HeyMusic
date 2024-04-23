@@ -1,6 +1,6 @@
 // 歌单相关 API
 
-import ajax from './apiBase';
+import ajax from "./apiBase";
 
 export interface PlaylistDetailRes {
     playlist: {
@@ -18,7 +18,7 @@ export interface PlaylistDetailRes {
             id: number;
             at: number;
         }[];
-    }
+    };
 }
 
 /**
@@ -27,7 +27,7 @@ export interface PlaylistDetailRes {
  */
 export const playlistDetail = (id: number | string) => {
     return ajax<PlaylistDetailRes>(`/playlist/detail?id=${id}`);
-}
+};
 
 interface CommentItem {
     content: string;
@@ -38,7 +38,7 @@ interface CommentItem {
     };
     time: number;
     likedCount: number;
-    beReplied: Omit<CommentItem, 'beReplied' | 'time' | 'likedCount'>[];
+    beReplied: Omit<CommentItem, "beReplied" | "time" | "likedCount">[];
 }
 
 export interface PlaylistCommentRes {
@@ -53,27 +53,36 @@ export interface PlaylistCommentRes {
  */
 export const playlistComment = (id: number | string) => {
     return ajax<PlaylistCommentRes>(`/comment/playlist?id=${id}`);
-}
+};
 
 /**
  * 对歌单添加或删除歌曲
  * @param opt 操作
  * @param playlistId 歌单 id
  * @param songId 歌曲 id
- * @returns 
+ * @returns
  */
-export const songlistTracks = (opt: 'add' | 'del', playlistId: number | string, songId: number) => {
-    return ajax(`/playlist/tracks?op=${opt}&pid=${playlistId}&tracks=${songId}`);
-}
+export const songlistTracks = (
+    opt: "add" | "del",
+    playlistId: number | string,
+    songId: number
+) => {
+    return ajax(
+        `/playlist/tracks?op=${opt}&pid=${playlistId}&tracks=${songId}`
+    );
+};
 
 /**
  * 收藏 / 取消收藏歌单
  * @param id 歌单 id
  * @param type 1: 收藏 2: 取消收藏
  */
-export const songlistSubscribe = (id: number | string, type: number | string = 1) => {
+export const songlistSubscribe = (
+    id: number | string,
+    type: number | string = 1
+) => {
     return ajax(`/playlist/subscribe?t=${type}&id=${id}`);
-}
+};
 
 /**
  * 删除歌单
@@ -81,7 +90,7 @@ export const songlistSubscribe = (id: number | string, type: number | string = 1
  */
 export const deleteSonglist = (id: number | string) => {
     return ajax(`/playlist/delete?id=${id}`);
-}
+};
 
 export interface UserSonglistRes {
     playlist: {
@@ -99,4 +108,4 @@ export interface UserSonglistRes {
  */
 export const userPlaylist = (id: number | string) => {
     return ajax<UserSonglistRes>(`/user/playlist?uid=${id}`);
-}
+};

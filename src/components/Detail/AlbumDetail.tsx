@@ -25,10 +25,11 @@ function AlbumDetail({ detailData, songList }: Props) {
     // 播放全部
 
     const handlePlayAll = async () => {
-        const firstSong = songList[0];
+        const freeSongList = songList.filter((item) => item.isFree);
+        const firstSong = freeSongList[0];
         dispatch(playSong({ item: firstSong }));
         dispatch(commitPlaying(firstSong));
-        dispatch(setPlaylist(songList));
+        dispatch(setPlaylist(freeSongList));
     };
 
     return (

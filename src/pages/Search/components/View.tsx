@@ -9,7 +9,6 @@ import VideosList from "./VideosList";
 
 interface Props {
     pageState: PageState | null;
-    // setPageState: (pageState: Partial<PageState>) => void;
     onPlayAll: (id: number) => Promise<void>;
 }
 function View({ pageState, onPlayAll }: Props) {
@@ -40,7 +39,7 @@ function View({ pageState, onPlayAll }: Props) {
             <div className="videos">
                 <div className="title">视频</div>
                 <div className="videosList">
-                    {videos.slice(0, 3).map((item) => (
+                    {videos.slice(0, 4).map((item) => (
                         <VideosList
                             creater={item.creator}
                             key={item.vid}

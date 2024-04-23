@@ -106,7 +106,6 @@ const songSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(playSong.fulfilled, (state, action) => {
-                console.log(action);
                 if (action.payload) {
                     // @ts-ignore
                     state.playingItem = music().getPlayingItem();

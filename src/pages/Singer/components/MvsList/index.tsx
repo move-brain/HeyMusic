@@ -15,7 +15,7 @@ const MvsList = ({ data }: Props) => {
     return (
         <div className={style.MvsList}>
             {data.map(({ id, imgurl, name, publishTime }) => (
-                <div className="Item">
+                <div key={id} className="Item">
                     <Link to={`/Video?id=${id}`}>
                         <RectangleImage cover={imgurl} />
                     </Link>

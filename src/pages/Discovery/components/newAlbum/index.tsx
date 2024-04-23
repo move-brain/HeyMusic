@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import type { PageState } from "../../index";
 interface Props {
     data: PageState["albumList"];
-    onPlayAll: (id: number) => Promise<void>;
+    onPlayAll: (id: number, type?: string) => Promise<void>;
 }
 
 function NewalbumList({ data, onPlayAll }: Props) {

@@ -18,7 +18,6 @@ function View({ pageState, onPlayAll }: Props) {
     }
 
     const { header, songList, intro, albumList, MVList } = pageState;
-    console.log(songList);
 
     return (
         <div className={style.singer}>

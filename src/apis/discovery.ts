@@ -1,6 +1,6 @@
 // 推荐相关 API
 
-import ajax from './apiBase';
+import ajax from "./apiBase";
 
 export interface BannerRes {
     banners: {
@@ -15,8 +15,8 @@ export interface BannerRes {
  * 获取轮播图
  */
 export const banner = () => {
-    return ajax<BannerRes>('/banner');
-}
+    return ajax<BannerRes>("/banner");
+};
 
 export interface RecommendPlaylistRes {
     result: {
@@ -34,7 +34,7 @@ export interface RecommendPlaylistRes {
  */
 export const recommendPlaylist = (limit: number = 10) => {
     return ajax<RecommendPlaylistRes>(`/personalized?limit=${limit}`);
-}
+};
 
 export interface TopSongRes {
     data: {
@@ -58,13 +58,12 @@ export interface TopSongRes {
  */
 export const topSong = (type: number = 0) => {
     return ajax<TopSongRes>(`/top/song?type=${type}&limit=10`);
-}
+};
 
 //获取相似的歌曲
 export const simiSong = (id: number) => {
     return ajax(`/simi/song?id=${id}`);
-}
-
+};
 
 export interface topPlaylistRes {
     list: {
@@ -81,61 +80,53 @@ export interface topPlaylistRes {
  */
 export const topPlaylist = () => {
     return ajax(`/toplist/detail`);
-}
+};
 
-export interface newAlbumlistType{
-    album:{
-        artist:{
-            name:string,
-            id:number,
-    
-        },
-        blurPicUrl:string,
-        id:number,
-        name:string,
-    }[]
+export interface newAlbumlistType {
+    album: {
+        artist: {
+            name: string;
+            id: number;
+        };
+        blurPicUrl: string;
+        id: number;
+        name: string;
+    }[];
 }
-
 
 /**
 最新专辑
  */
 export const newAlbumlist = () => {
     return ajax(`/album/newest`);
+};
+
+export interface hotSingerType {
+    singer: {
+        picUrl: string;
+        id: number;
+        name: string;
+    }[];
 }
-
-
-export interface hotSingerType{
-    singer:{
-        picUrl:string,
-        id:number,
-        name:string,
-    }[]
-}
-
 
 /**
 热门歌手
  */
 export const hotSinger = () => {
     return ajax(`/toplist/artist`);
+};
+
+export interface huaLiuType {
+    hotAlbums: {
+        blurPicUrl: string;
+        id: number;
+        name: string;
+    }[];
 }
-
-
-
-export interface huaLiuType{
-    hotAlbums:{
-        blurPicUrl:string,
-        id:number,
-        name:string,
-    }[]
-}
-
-
 
 /**
 热门歌手
  */
 export const huaLiu = () => {
     return ajax(`/artist/album?id=6452`);
-}
+};

@@ -1,6 +1,5 @@
 import style from "./index.module.scss";
 import PlaylistItem from "@/components/PlaylistItem";
-import { Link } from "react-router-dom";
 import { memo } from "react";
 interface Props {
     data: {

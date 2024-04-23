@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import style from "./index.module.scss";
 import Skeleton from "@mui/material/Skeleton";
+import { replaceHttpToHttps as rp } from "@/utils";
 
 interface Props {
     cover: string;
@@ -31,7 +32,7 @@ const SquareImg = ({ cover, isKeep }: Props) => {
                 />
             )}
             <img
-                src={cover}
+                src={`${rp(cover)}?param=400y400`}
                 loading="lazy"
                 onLoad={() => setIscomplete(true)}
             />

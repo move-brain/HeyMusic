@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
 import style from "./index.module.scss";
+import { replaceHttpToHttps as rp } from "@/utils";
 
 interface Props {
     cover: string;
@@ -18,7 +19,7 @@ const RectangleImg = ({ cover, isKeep }: Props) => {
             }}
             className={style.ImgePar}
         >
-            <img src={cover} />
+            <img loading="lazy" src={`${rp(cover)}?param=400y400`} />
             <div
                 className={style.shaow}
                 style={isHovered ? backImage : {}}

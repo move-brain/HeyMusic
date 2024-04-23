@@ -1,6 +1,8 @@
 import { memo, useState } from "react";
 import style from "./index.module.scss";
 import Skeleton from "@mui/material/Skeleton";
+import { replaceHttpToHttps as rp } from "@/utils";
+
 interface Props {
     cover: string;
 }
@@ -8,7 +10,7 @@ const RoundImg = ({ cover }: Props) => {
     const [isHovered, setIsHovered] = useState(false);
     const [iscomplete, setIscomplete] = useState(false);
     const backImage = {
-        backgroundImage: `url(${cover})`,
+        backgroundImage: `url(${rp(cover)}?param=200y200)`,
         borderRadius: "50%",
     };
     return (
@@ -29,7 +31,7 @@ const RoundImg = ({ cover }: Props) => {
                 />
             )}
             <img
-                src={cover}
+                src={`${rp(cover)}?param=200y200`}
                 loading="lazy"
                 onLoad={() => setIscomplete(true)}
             />

@@ -32,46 +32,59 @@ function Singer() {
         }
 
         const getData = async () => {
-            const singerRes = await singerInfo(id as string);
-            console.log(singerRes);
-
-            const descRes = await singerDesc(id as string);
-            const albumRes = await singerAlbum(id as string);
-            const Mvs = await singerMvs(id);
-            console.log(Mvs);
-
-            const header = {
-                name: singerRes.artist.name,
-                alias: singerRes.artist.alias,
-                cover: singerRes.artist.picUrl,
-                albumSize: singerRes.artist.albumSize,
-                musicSize: singerRes.artist.musicSize,
-                mvSize: singerRes.artist.mvSize,
-                transNames: singerRes.artist.transNames,
-            };
-            const songList = resolveSongs(singerRes.hotSongs, "detail");
-            const intro = {
-                intro: descRes.introduction,
-                briefDesc: descRes.briefDesc,
-            };
-            console.log(albumRes);
-
-            const albumList = albumRes.hotAlbums.map((item: any) => ({
-                id: item.id,
-                name: item.name,
-                artists: item.artists,
-                picUrl: item.picUrl,
-                date: new Date(item.publishTime).getFullYear(),
-            }));
-
-            const MVList = Mvs.mvs.map((item: any) => ({
-                id: item.id,
-                imgurl: item.imgurl,
-                name: item.name,
-                publishTime: item.publishTime,
-            }));
-
-            setPageState({ header, songList, intro, albumList, MVList });
+            await Promise.allSettled([
+                singerInfo(id as string),
+                singerDesc(id as string),
+                singerAlbum(id as string),
+                singerMvs(id),
+            ]).then((res) => {
+                setPageState({
+                    header:
+                        res[0].status == "fulfilled"
+                            ? {
+                                  name: res[0].value.artist.name,
+                                  alias: res[0].value.artist.alias,
+                                  cover: res[0].value.artist.picUrl,
+                                  albumSize: res[0].value.artist.albumSize,
+                                  musicSize: res[0].value.artist.musicSize,
+                                  mvSize: res[0].value.artist.mvSize,
+                                  transNames: res[0].value.artist.transNames,
+                              }
+                            : {},
+                    songList:
+                        res[0].status == "fulfilled"
+                            ? resolveSongs(res[0].value.hotSongs, "detail")
+                            : [],
+                    intro:
+                        res[1].status == "fulfilled"
+                            ? {
+                                  intro: res[1].value.introduction,
+                                  briefDesc: res[1].value.briefDesc,
+                              }
+                            : {},
+                    albumList:
+                        res[2].status == "fulfilled"
+                            ? res[2].value.hotAlbums.map((item: any) => ({
+                                  id: item.id,
+                                  name: item.name,
+                                  artists: item.artists,
+                                  picUrl: item.picUrl,
+                                  date: new Date(
+                                      item.publishTime
+                                  ).getFullYear(),
+                              }))
+                            : [],
+                    MVList:
+                        res[3].status == "fulfilled"
+                            ? res[3].value.mvs.map((item: any) => ({
+                                  id: item.id,
+                                  imgurl: item.imgurl,
+                                  name: item.name,
+                                  publishTime: item.publishTime,
+                              }))
+                            : [],
+                });
+            });
         };
         setPageState(null);
         getData();

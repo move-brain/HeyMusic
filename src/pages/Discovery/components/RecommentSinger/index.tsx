@@ -1,6 +1,5 @@
 import style from "./index.module.scss";
 import type { PageState } from "../../index";
-import { replaceHttpToHttps as rp } from "@/utils";
 import { Link } from "react-router-dom";
 import RoundImage from "@/components/RoundImage";
 interface Props {
@@ -11,7 +10,7 @@ export default function RecommentSinger({ data }: Props) {
         <div className={style.playlist}>
             {list.map(({ id, name, picUrl }) => (
                 <div className={style.listitem} key={id}>
-                    <RoundImage cover={`${rp(picUrl)}?param=200y200`} />
+                    <RoundImage cover={picUrl} />
                     <Link className={style.name} to={`/Singer?id=${id}`}>
                         {name}
                     </Link>

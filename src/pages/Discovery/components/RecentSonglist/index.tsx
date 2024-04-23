@@ -2,6 +2,7 @@ import style from "./index.module.scss";
 import { Link } from "react-router-dom";
 import { setPlaylist, playSong, selectSong } from "@/store/songSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
+import { replaceHttpToHttps as rp } from "@/utils";
 
 import type { MouseEvent } from "react";
 import type { PageState } from "../../index";
@@ -28,7 +29,10 @@ function RecentSonglist({ data }: Props) {
             <div className={style.item} key={id}>
                 <Link className={style.image} to={`/Song?id=${id}`}>
                     <div className={style.image1}>
-                        <img src={cover} loading="lazy" />
+                        <img
+                            src={`${rp(cover)}?param=100y100`}
+                            loading="lazy"
+                        />
                     </div>
                 </Link>
                 <div className={style.information}>

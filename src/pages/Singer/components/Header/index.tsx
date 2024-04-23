@@ -1,6 +1,7 @@
 import style from "./index.module.scss";
 import RoundImage from "@/components/RoundImage";
 import PlayButton from "@/components/PlayButton";
+
 interface Props {
     data: any;
 }

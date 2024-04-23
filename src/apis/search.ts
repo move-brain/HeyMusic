@@ -1,6 +1,6 @@
 // 搜索相关 API
 
-import ajax from './apiBase';
+import ajax from "./apiBase";
 
 interface SearchSuggestRes {
     result: {
@@ -31,7 +31,7 @@ interface SearchSuggestRes {
  */
 export const searchSuggest = (keywords: string) => {
     return ajax<SearchSuggestRes>(`/search/suggest?keywords=${keywords}`);
-}
+};
 
 // 搜索单曲
 export interface SearchSongRes {
@@ -41,14 +41,14 @@ export interface SearchSongRes {
             id: number;
             name: string;
             duration: number;
-            isFree:boolean,
-            cover:string
+            isFree: boolean;
+            cover: string;
             singers: {
                 id: number;
                 name: string;
             }[];
-            albumId:number,
-            albumName:string
+            albumId: number;
+            albumName: string;
         }[];
     };
 }
@@ -101,21 +101,33 @@ export interface SearchVideosRes {
             vid: number;
             title: string;
             coverUrl: string;
-            creator:{
-                userId:number,
-                userName:string
-            }[]
+            creator: {
+                userId: number;
+                userName: string;
+            }[];
         }[];
     };
 }
 
-type SearchRes = SearchSongRes | SearchAlbumRes | SearchSingerRes | SearchPlaylistRes | SearchVideosRes;
+type SearchRes =
+    | SearchSongRes
+    | SearchAlbumRes
+    | SearchSingerRes
+    | SearchPlaylistRes
+    | SearchVideosRes;
 /**
  * 搜索
  * @param keywords 关键词
  * @param type 类型 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单
  * @param offset 偏移
  */
-export const search = (keywords: string, type: string, offset: number,limit?:number) => {
-    return ajax<SearchRes>(`/cloudsearch?keywords=${keywords}&type=${type}&limit=${limit}`);
-}
+export const search = (
+    keywords: string,
+    type: string,
+    offset: number,
+    limit?: number
+) => {
+    return ajax<SearchRes>(
+        `/cloudsearch?keywords=${keywords}&type=${type}&limit=${limit}`
+    );
+};

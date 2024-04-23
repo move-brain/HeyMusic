@@ -28,6 +28,7 @@ function Album() {
 
         const getData = async () => {
             const detailRes = await album(id);
+
             // 详情
             const detail = resolveDetail(detailRes);
             // 歌曲列表

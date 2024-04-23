@@ -9,7 +9,7 @@ import RecommentSinger from "./RecommentSinger";
 import HuaLiu from "./HuaLiu";
 interface Props {
     pageState: PageState | null;
-    onPlayAll: (id: number) => Promise<void>;
+    onPlayAll: (id: number, type?: string) => Promise<void>;
 }
 
 function View({ pageState, onPlayAll }: Props) {

@@ -1,6 +1,6 @@
 // 歌曲相关 API
 
-import ajax from './apiBase';
+import ajax from "./apiBase";
 
 interface CommentItem {
     content: string;
@@ -11,7 +11,7 @@ interface CommentItem {
     };
     time: number;
     likedCount: number;
-    beReplied: Omit<CommentItem, 'beReplied' | 'time' | 'likedCount'>[];
+    beReplied: Omit<CommentItem, "beReplied" | "time" | "likedCount">[];
 }
 
 export interface SongCommentRes {
@@ -26,7 +26,7 @@ export interface SongCommentRes {
  */
 export const songComment = (id: number | string) => {
     return ajax<SongCommentRes>(`/comment/music?id=${id}`);
-}
+};
 
 export interface SongDetailRes {
     songs: {
@@ -50,20 +50,20 @@ export interface SongDetailRes {
  */
 export const songDetail = (ids: number[] | string[]) => {
     return ajax<SongDetailRes>(`/song/detail?ids=${ids.join()}`);
-}
+};
 
 export interface LyricRes {
     uncollected?: boolean;
     nolyric?: boolean;
-    lrc: { lyric: string; };
+    lrc: { lyric: string };
     tlyric: { lyric?: string };
 }
 
 /**
  * 获取歌词
  * @param id 歌曲 id
- * @returns 
+ * @returns
  */
 export const getLyric = async (id: number | string) => {
     return ajax<LyricRes>(`/lyric?id=${id}`);
-}
+};

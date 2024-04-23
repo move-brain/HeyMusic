@@ -1,6 +1,8 @@
 import { memo } from "react";
 import style from "./index.module.scss";
 import { Link } from "react-router-dom";
+import { replaceHttpToHttps as rp } from "@/utils";
+
 interface Props {
     data: {
         id: number;
@@ -23,7 +25,11 @@ const SongList = ({ data }: Props) => {
             <div className={style.left}>
                 <Link to={`/Song?id=${id}`}>
                     {" "}
-                    <img className={style.image} src={cover} />
+                    <img
+                        className={style.image}
+                        src={`${rp(cover)}?param=100y100`}
+                        loading="lazy"
+                    />
                 </Link>
                 <div className={style.songAndsinger}>
                     <div className={style.songName}>{name}</div>
