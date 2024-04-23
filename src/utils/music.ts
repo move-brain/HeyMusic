@@ -3,7 +3,7 @@ import axios from "axios";
 import cache from "./cache";
 import { songDetail, getLyric } from "@/apis/song";
 import { resolveLyric, resolveSongs } from "@/utils/resolve";
-// import { replaceHttpToHttps as rp } from '@/utils';
+import { replaceHttpToHttps as rp } from "@/utils";
 import getFreqData from "./getFreqData";
 
 export interface MusicItem {
@@ -125,7 +125,7 @@ class Music {
                     console.log(res.data);
                     const { url } = res.data[0]; //获取歌曲url
                     const pBuffer = axios({
-                        url,
+                        url: rp(url),
                         responseType: "arraybuffer", //告诉服务器要以 arraybuffer 格式返回
                     })
                         .then((res) => res.data)
