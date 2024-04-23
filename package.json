@@ -5,7 +5,8 @@
     "scripts": {
         "start": "vite",
         "front": "vite",
-        "build": "tsc && vite build"
+        "build": "tsc && vite build",
+        "vercel": "tsc && vite build --mode vercel"
     },
     "dependencies": {
         "@emotion/react": "^11.11.4",
