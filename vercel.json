@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "https://music.izxl.asia/api/:path*"
+            "destination": "https://api.izxl.asia/:path*"
         },
         { "source": "/:path*", "destination": "/index.html" }
     ]
