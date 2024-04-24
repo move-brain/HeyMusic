@@ -19,7 +19,7 @@ const RectangleImg = ({ cover, isKeep }: Props) => {
             }}
             className={style.ImgePar}
         >
-            <img loading="lazy" src={`${rp(cover)}?param=400y400`} />
+            <img loading="lazy" src={`${rp(cover)}?param=300y300`} />
             <div
                 className={style.shaow}
                 style={isHovered ? backImage : {}}

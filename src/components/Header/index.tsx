@@ -60,7 +60,7 @@ function Header() {
                     avatar={
                         userInfo.avatar
                             ? userInfo.avatar
-                            : "https://w.wallhaven.cc/full/qz/wallhaven-qzveyd.jpg"
+                            : "src/assets/musician.png"
                     }
                 />
             </div>

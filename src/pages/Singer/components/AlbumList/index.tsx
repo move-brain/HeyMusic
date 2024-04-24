@@ -13,8 +13,6 @@ interface Props {
 }
 
 function AlbumList({ data, onPlayAll }: Props) {
-    console.log(data);
-
     return (
         <div className={style.albumList}>
             {data.map(({ id, name, picUrl, date }) => (

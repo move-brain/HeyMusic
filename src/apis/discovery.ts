@@ -98,7 +98,7 @@ export interface newAlbumlistType {
 最新专辑
  */
 export const newAlbumlist = () => {
-    return ajax(`/album/newest`);
+    return ajax(`/album/newest?limit=10`);
 };
 
 export interface hotSingerType {
@@ -113,7 +113,7 @@ export interface hotSingerType {
 热门歌手
  */
 export const hotSinger = () => {
-    return ajax(`/toplist/artist`);
+    return ajax(`/toplist/artist?limit=6`);
 };
 
 export interface huaLiuType {

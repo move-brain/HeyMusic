@@ -7,8 +7,8 @@ import ajax from "./apiBase";
  * @param id 歌手 id
  * @returns
  */
-export const singerInfo = (id: number | string) => {
-    return ajax(`/artists?id=${id}`);
+export const singerInfo = (id: number | string, limit: number) => {
+    return ajax(`/artists?id=${id}&limit=${limit}`);
 };
 
 /**

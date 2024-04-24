@@ -33,11 +33,12 @@ function Singer() {
 
         const getData = async () => {
             await Promise.allSettled([
-                singerInfo(id as string),
+                singerInfo(id as string, 12),
                 singerDesc(id as string),
                 singerAlbum(id as string),
                 singerMvs(id),
             ]).then((res) => {
+                console.log(res[0]);
                 setPageState({
                     header:
                         res[0].status == "fulfilled"
@@ -86,7 +87,6 @@ function Singer() {
                 });
             });
         };
-        setPageState(null);
         getData();
     }, []);
 

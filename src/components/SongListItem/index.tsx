@@ -17,6 +17,8 @@ interface Props {
 }
 const SongList = ({ data }: Props) => {
     const { id, name, singers, isFree, cover } = data;
+    console.log(cover);
+
     return (
         <div
             style={{ color: !isFree ? "#b8b8b8" : "black" }}
@@ -24,7 +26,6 @@ const SongList = ({ data }: Props) => {
         >
             <div className={style.left}>
                 <Link to={`/Song?id=${id}`}>
-                    {" "}
                     <img
                         className={style.image}
                         src={`${rp(cover)}?param=100y100`}

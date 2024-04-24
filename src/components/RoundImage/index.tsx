@@ -31,7 +31,13 @@ const RoundImg = ({ cover }: Props) => {
                 />
             )}
             <img
-                src={`${rp(cover)}?param=200y200`}
+                srcSet={`${rp(cover)}?param=100y100 100w,${rp(
+                    cover
+                )}?param=200y200 250w,${rp(cover)}?param=300y300 300w,${rp(
+                    cover
+                )}?param=400y400 400w`}
+                sizes="12.6vw"
+                src={`${rp(cover)}?param=800y800`}
                 loading="lazy"
                 onLoad={() => setIscomplete(true)}
             />
