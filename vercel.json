@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "http://110.41.18.94:3000/api/:path*"
+            "destination": "https://music.izxl.asia/api/:path*"
         },
         { "source": "/:path*", "destination": "/index.html" }
     ]
