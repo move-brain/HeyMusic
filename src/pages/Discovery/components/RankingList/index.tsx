@@ -1,12 +1,13 @@
 import style from "./index.module.scss";
 import PlaylistItem from "@/components/PlaylistItem";
-import type { PageState } from "../../index";
+import { PlayAllContext, type PageState } from "../../index";
+import { useContext } from "react";
 interface Props {
     data: PageState["rankingList"];
-    onPlayAll: (id: number) => Promise<void>;
 }
 
-function RankingList({ data, onPlayAll }: Props) {
+function RankingList({ data }: Props) {
+    const onPlayAll = useContext(PlayAllContext);
     const renderList = (list: Props["data"]) => (
         <div className="playlist">
             {list.map(({ id, name, coverImgUrl, updateFrequency }) => (

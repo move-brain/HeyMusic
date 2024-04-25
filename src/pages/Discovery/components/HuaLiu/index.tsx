@@ -1,13 +1,14 @@
 import style from "./index.module.scss";
 import PlaylistItem from "@/components/PlaylistItem";
 import type { PageState } from "../../index";
-
+import { memo, useContext } from "react";
+import { PlayAllContext } from "../../index";
 interface Props {
     data: PageState["fristPlayList"];
-    onPlayAll: (id: number) => Promise<void>;
 }
 
-function HuaLiu({ data, onPlayAll }: Props) {
+function HuaLiu({ data }: Props) {
+    const onPlayAll = useContext(PlayAllContext);
     const renderList = (list: Props["data"]) => (
         <div className="playlist">
             {list.map(({ id, name, coverImgUrl }) => (
@@ -29,4 +30,4 @@ function HuaLiu({ data, onPlayAll }: Props) {
     );
 }
 
-export default HuaLiu;
+export default memo(HuaLiu);

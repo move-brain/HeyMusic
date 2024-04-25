@@ -1,13 +1,15 @@
 import style from "./index.module.scss";
 import PlaylistItem from "@/components/PlaylistItem";
 import type { PageState } from "../../index";
+import { memo, useContext } from "react";
+import { PlayAllContext } from "../../index";
 
 interface Props {
     data: PageState["recommendPlaylist"];
-    onPlayAll: (id: number) => Promise<void>;
 }
 
-function RecommentPlaylist({ data, onPlayAll }: Props) {
+function RecommentPlaylist({ data }: Props) {
+    const onPlayAll = useContext(PlayAllContext);
     const renderList = (list: Props["data"]) => (
         <div className="playlist">
             {list.map(({ id, name, picUrl }) => (
@@ -29,4 +31,4 @@ function RecommentPlaylist({ data, onPlayAll }: Props) {
     );
 }
 
-export default RecommentPlaylist;
+export default memo(RecommentPlaylist);

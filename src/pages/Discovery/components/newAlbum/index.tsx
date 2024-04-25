@@ -1,13 +1,14 @@
 import style from "./index.module.scss";
 import PlaylistItem from "@/components/PlaylistItem";
 import { Link } from "react-router-dom";
-import type { PageState } from "../../index";
+import { PlayAllContext, type PageState } from "../../index";
+import { useContext } from "react";
 interface Props {
     data: PageState["albumList"];
-    onPlayAll: (id: number, type?: string) => Promise<void>;
 }
 
-function NewalbumList({ data, onPlayAll }: Props) {
+function NewalbumList({ data }: Props) {
+    const onPlayAll = useContext(PlayAllContext);
     const renderList = (list: Props["data"]) => (
         <div className="playlist">
             {list.map(({ id, name, blurPicUrl, artist }) => (

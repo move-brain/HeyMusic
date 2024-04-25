@@ -1,3 +1,4 @@
+import { memo } from "react";
 import style from "./View.module.scss";
 import { Loading } from "@/components";
 import RecommentPlaylist from "./RecommentPlaylist";
@@ -9,10 +10,9 @@ import RecommentSinger from "./RecommentSinger";
 import HuaLiu from "./HuaLiu";
 interface Props {
     pageState: PageState | null;
-    onPlayAll: (id: number, type?: string) => Promise<void>;
 }
 
-function View({ pageState, onPlayAll }: Props) {
+function View({ pageState }: Props) {
     if (!pageState) {
         return <Loading />;
     }
@@ -30,14 +30,11 @@ function View({ pageState, onPlayAll }: Props) {
         <div className={style.discovery}>
             <div>
                 <div className="title">云音乐</div>
-                <HuaLiu data={fristPlayList} onPlayAll={onPlayAll} />
+                <HuaLiu data={fristPlayList} />
             </div>
             <div>
                 <div className="title">推荐歌单</div>
-                <RecommentPlaylist
-                    data={recommendPlaylist}
-                    onPlayAll={onPlayAll}
-                />
+                <RecommentPlaylist data={recommendPlaylist} />
             </div>
             <div>
                 <div className="title">热门歌手</div>
@@ -45,7 +42,7 @@ function View({ pageState, onPlayAll }: Props) {
             </div>
             <div>
                 <div className="title">新专速递</div>
-                <NewalbumList data={albumList} onPlayAll={onPlayAll} />
+                <NewalbumList data={albumList} />
             </div>
             <div>
                 <div className="title">最新音乐</div>
@@ -53,10 +50,10 @@ function View({ pageState, onPlayAll }: Props) {
             </div>
             <div>
                 <div className="title">排行榜</div>
-                <RankingList data={rankingList} onPlayAll={onPlayAll} />
+                <RankingList data={rankingList} />
             </div>
         </div>
     );
 }
 
-export default View;
+export default memo(View);

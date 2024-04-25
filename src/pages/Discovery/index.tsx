@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo, createContext } from "react";
 import View from "./components/View";
 import { resolveSongs } from "@/utils/resolve";
 import {
@@ -36,6 +36,9 @@ export interface PageState {
     //第一栏
     fristPlayList: officialType["playList"];
 }
+export const PlayAllContext =
+    //@ts-ignore
+    createContext<(id: number, type?: string) => Promise<void>>(null);
 function Discovery() {
     const [pageState, setPageState] = useState<PageState | null>(null);
     const dispatch = useAppDispatch();
@@ -66,10 +69,6 @@ function Discovery() {
 
     useEffect(() => {
         const getData = async (): Promise<void> => {
-            console.log(11111111111);
-
-            // 轮播图
-            // 推荐歌单
             Promise.allSettled([
                 recommendPlaylist(),
                 topSong(),
@@ -104,7 +103,11 @@ function Discovery() {
         };
         getData();
     }, []);
-    return <View pageState={pageState} onPlayAll={handlePlayAll} />;
+    return (
+        <PlayAllContext.Provider value={handlePlayAll}>
+            <View pageState={pageState} />
+        </PlayAllContext.Provider>
+    );
 }
 
 export default Discovery;

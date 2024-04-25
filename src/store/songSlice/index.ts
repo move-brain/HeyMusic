@@ -93,7 +93,6 @@ const songSlice = createSlice({
             state.playMode = action.payload;
         },
         commitPlaying: (state, action: PayloadAction<SongItem>) => {
-            console.log(action.payload);
             //@ts-ignore
             state.playingItem = action.payload;
         },
@@ -111,8 +110,6 @@ const songSlice = createSlice({
                     state.playingItem = music().getPlayingItem();
                     state.isPlaying = true;
                     state.isLoading = false;
-                } else {
-                    Toast.show(`加载歌曲失败`);
                 }
             })
             .addCase(palynextSong.pending, (state) => {
@@ -128,8 +125,6 @@ const songSlice = createSlice({
                     state.playingItem = music().getPlayingItem();
                     state.isPlaying = true;
                     state.isLoading = false;
-                } else {
-                    Toast.show(`加载歌曲失败`);
                 }
             });
     },
