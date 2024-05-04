@@ -18,15 +18,17 @@ function SongInformation({ playingItem }: Props) {
                 <Link className="songName" to={`/Song?id=${id}`}>
                     {name}
                 </Link>
-                {singers.map((item) => (
-                    <Link
-                        key={item.id}
-                        to={`/Singer?id=${item.id}`}
-                        className="singer"
-                    >
-                        {item.name}
-                    </Link>
-                ))}
+                <div className="singers">
+                    {singers.map((item) => (
+                        <Link
+                            key={item.id}
+                            to={`/Singer?id=${item.id}`}
+                            className="singer"
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     );

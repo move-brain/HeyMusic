@@ -7,7 +7,6 @@ import {
 } from "@/utils/staticData";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@/utils/hooks";
 interface Props {
     category: string;
 }

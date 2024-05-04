@@ -6,8 +6,10 @@ import { convertTime } from "@/utils";
 import SongSlider from "@/components/SongSlider";
 import ControlButton from "../ControlButton";
 import DrawerButton from "@/components/DrawerButton";
+import LinearProgress from "@mui/material/LinearProgress";
 
 import type { State } from "@/store/songSlice/types";
+import classNames from "classnames";
 
 interface Props {
     IsShow: boolean;
@@ -16,6 +18,7 @@ interface Props {
     ChanageDuration: (event: Event, value: number) => void;
     ShowMusic: (bool: boolean) => void;
     handlePlayOrPause: () => void;
+    isLoading: boolean;
 }
 
 const MusicBac = ({
@@ -25,14 +28,18 @@ const MusicBac = ({
     ChanageDuration,
     ShowMusic,
     handlePlayOrPause,
+    isLoading,
 }: Props) => {
     const { lyric, cover, name, singers, duration } = playingItem;
+
     const singerName = singers.map((_) => _.name);
     const sliderObj = {
         height: 4,
         "& .MuiSlider-thumb": {
             width: 4,
             height: 4,
+            position: "absolute",
+            top: "0px",
             transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
             "&:hover, &.Mui-focusVisible, &.Mui-active": {
                 color: "#fff",
@@ -57,16 +64,24 @@ const MusicBac = ({
         >
             <div className={style.MusicBac}>
                 <div className="left">
-                    <SquareImg cover={cover} isKeep />
+                    <SquareImg highDefinition cover={cover} isKeep />
                     <div className="Name">{name}</div>
                     <div className="singer">{singerName.join("-")}</div>
                     <div className="slider">
-                        <SongSlider
-                            styleObj={sliderObj}
-                            duration={duration}
-                            ChanageDuration={ChanageDuration}
-                            currentTime={currentTime}
-                        />
+                        {isLoading ? (
+                            <LinearProgress
+                                sx={{
+                                    height: "2.5px",
+                                    color: "#335eea",
+                                }}
+                            />
+                        ) : (
+                            <SongSlider
+                                duration={duration}
+                                ChanageDuration={ChanageDuration}
+                                currentTime={currentTime}
+                            />
+                        )}
                     </div>
                     <div className="Time">
                         <span>{convertTime(currentTime)}</span>
@@ -77,8 +92,28 @@ const MusicBac = ({
                     </div>
                 </div>
                 <div className="right">
-                    <DrawerButton ClickIcon={ShowMusic} />
+                    {lyric?.map(
+                        (item) =>
+                            item && (
+                                <div
+                                    className={classNames("lyricItem", {
+                                        activeLyric: true,
+                                    })}
+                                >
+                                    <span>{item[0]}</span>
+                                </div>
+                            )
+                    )}
                 </div>
+            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    right: "20px",
+                    top: "20px",
+                }}
+            >
+                <DrawerButton ClickIcon={ShowMusic} />
             </div>
         </Drawer>
     );

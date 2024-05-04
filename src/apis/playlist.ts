@@ -120,7 +120,7 @@ export interface Tagplaylist {
         trackCount: number;
     }[];
 }
-export const getTagPlaylist = (category: string, offset = 1, limit = 30) => {
+export const getTagPlaylist = (category: string, offset = 0, limit = 50) => {
     return ajax(
         `/top/playlist?cat=${category}&offset=${offset}&limit=${limit}`
     );

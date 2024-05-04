@@ -16,6 +16,7 @@ const explore = () => {
         []
     );
     const [IsLoading, setIsLoading] = useState<boolean>(true);
+    const [offset, setOffset] = useState<number>(50);
     const dispatch = useAppDispatch();
     // 播放歌单内所有歌曲
     const handlePlayAll = async (id: number, type?: string) => {
@@ -33,6 +34,12 @@ const explore = () => {
         dispatch(commitPlaying(freeSongList[0]));
         dispatch(playSong({ item: freeSongList[0] }));
     };
+
+    const getMore = async () => {
+        const playlist = await getTagPlaylist(category, offset);
+        setPlaylists([...Playlist, ...playlist.playlists]);
+        setOffset((offset) => offset + 50);
+    };
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
@@ -44,6 +51,7 @@ const explore = () => {
     }, [category]);
     return (
         <View
+            getMore={getMore}
             IsLoading={IsLoading}
             onPlayAll={handlePlayAll}
             category={category}

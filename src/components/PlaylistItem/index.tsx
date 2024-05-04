@@ -43,6 +43,7 @@ export default ({
                     <PlayArrowRoundedIcon
                         sx={{
                             color: "#fff",
+                            fontSize: "40px",
                         }}
                     />
                 </div>

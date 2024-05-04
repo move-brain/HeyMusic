@@ -1,5 +1,12 @@
 .PlayLists {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px 20px;
+}
+.bottomButton {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

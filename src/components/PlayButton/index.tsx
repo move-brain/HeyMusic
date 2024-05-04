@@ -7,15 +7,22 @@ interface Props {
     text?: string;
     children?: ReactElement;
     IsDisabled?: boolean;
+    width?: string;
 }
 
-const PlayButton = ({ ClickButton, text, children, IsDisabled }: Props) => {
+const PlayButton = ({
+    ClickButton,
+    text,
+    children,
+    IsDisabled,
+    width,
+}: Props) => {
     return (
         <Button
             disabled={IsDisabled ? true : false}
             onClick={ClickButton}
             sx={{
-                width: "100px",
+                width: width ? width : "100px",
                 backgroundColor: "#eaeffd",
                 color: "#335eea",
                 transition: "transform 0.3s ease",

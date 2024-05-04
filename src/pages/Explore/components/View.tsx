@@ -7,13 +7,15 @@ interface Props {
     category: string;
     onPlayAll: (id: number, type?: string) => Promise<void>;
     IsLoading: boolean;
+    getMore: () => Promise<void>;
 }
-const View = ({ Playlist, category, onPlayAll, IsLoading }: Props) => {
+const View = ({ Playlist, category, onPlayAll, IsLoading, getMore }: Props) => {
     return (
         <div className={style.explore}>
             <div className="headline">发现</div>
             <SelectList category={category} />
             <PlayLists
+                getMore={getMore}
                 IsLoading={IsLoading}
                 onPlayAll={onPlayAll}
                 Playlist={Playlist}

@@ -75,6 +75,7 @@ function MusicPlayer() {
                     />
                 </div>
                 <MusicDrawer
+                    isLoading={isLoading}
                     handlePlayOrPause={handlePlayOrPause}
                     ShowMusic={ShowMusic}
                     IsShow={IsShow}
