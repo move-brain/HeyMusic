@@ -14,15 +14,28 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border: 2px solid #fff;
             opacity: 0;
-            transition: opacity 0.1s 0.1s;
+            transition: opacity transform 0.1s;
+            background-color: rgba($color: #fff, $alpha: 0.5);
             &:hover {
-                box-shadow: 0 0 8px #fff;
-                opacity: 0.8;
+                opacity: 1;
+            }
+            &:active {
+                transform: translate(-50%, -50%) scale(0.9);
             }
         }
-
+        .playcount {
+            height: 12px;
+            position: relative;
+            color: #9b9b9b;
+            display: flex;
+            margin-bottom: 3px;
+            span {
+                position: absolute;
+                left: 18px;
+                font-size: small;
+            }
+        }
         .description {
             display: block;
             margin-top: 10px;

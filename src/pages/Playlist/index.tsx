@@ -34,7 +34,6 @@ function Playlist() {
 
         const getData = async () => {
             const detailRes = await playlistDetail(id as string);
-            console.log(detailRes);
 
             // 详情
             const detail = resolveDetail(detailRes);

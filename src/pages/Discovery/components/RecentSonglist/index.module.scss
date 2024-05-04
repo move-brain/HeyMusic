@@ -11,36 +11,10 @@
         border-radius: 8px;
     }
 
-    .image {
-        display: block;
-        position: relative;
-        cursor: pointer;
-    }
-
     img {
         border-radius: 8px;
         height: 60px;
         width: 60px;
-    }
-
-    .play-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 20px;
-        width: 20px;
-        font-size: 12px;
-        color: #fff;
-        background-color: rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 1px solid #fff;
-        border-radius: 10px;
-        &:hover {
-            box-shadow: 0 0 8px #fff;
-        }
     }
 
     .information {

@@ -16,7 +16,7 @@ function Tabs({ currRoute }: Props) {
         {
             id: 2,
             title: "发现",
-            route: "/User",
+            route: "/Explore",
         },
         {
             id: 3,

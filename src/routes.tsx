@@ -11,6 +11,8 @@ const Singer = lazy(() => import("./pages/Singer"));
 const Song = lazy(() => import("./pages/Song"));
 const User = lazy(() => import("./pages/User"));
 const Video = lazy(() => import("./pages/Video"));
+const Login = lazy(() => import("./pages/Login"));
+const Explore = lazy(() => import("./pages/Explore"));
 
 export default [
     {
@@ -56,6 +58,14 @@ export default [
     {
         path: "/Video",
         element: <Video />,
+    },
+    {
+        path: "/login",
+        element: <Login />,
+    },
+    {
+        path: "/Explore",
+        element: <Explore />,
     },
     {
         path: "/*",

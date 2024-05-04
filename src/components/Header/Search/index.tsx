@@ -88,65 +88,7 @@ function Search() {
                     setSearchValue("");
                     setDropdownItemsMap({});
                 }}
-                // style={{ width: focus ? 320 : 160 }}
             />
-            {/* <TextField
-          id="outlined-start-adornment"
-          sx={{ m: 1, width: '200px',padding:"0px 0px",height:"32px" }}
-          InputProps={{
-            // startAdornment: <InputAdornment position="start"><SearchRoundedIcon/></InputAdornment>,
-          }}
-        /> */}
-            {/* <TextField
-        id="input-with-icon-textfield"
-        sx={{
-            backgroundColor:"#edf2ff",
-            border:"0px",
-            "&::before":{
-                height:"0px"
-            }
-        }}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchRoundedIcon />
-            </InputAdornment>
-          ),
-        }}
-        variant="filled"
-      /> */}
-            {/* <FilledInput
-        hiddenLabel
-        id="filled-hidden-label-small"
-        defaultValue="Small"
-        size="small"
-        sx={{
-            "&.Mui-focused":{
-                "&::after":{
-                    content:'""',
-                    left:"100px",
-                    position:"relative",
-                    borderBottom:"none"
-                }
-            },
-            "&.Mui-hoved":{
-                "&::after":{
-                    borderBottom:"none"
-                }
-            },
-            "& .MuiFilledInput-input":{
-            padding:"0px",
-            borderBottom:"none",
-
-        },
-        "&.MuiFilledInput-root":{
-            "&::before":{
-                content:'""',
-                borderBottom:"none"
-            }
-        }
-        }}
-        /> */}
             {focus && (
                 <div className="search-suggest">
                     {dropdownItemsMap.songs && (

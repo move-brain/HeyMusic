@@ -94,3 +94,13 @@ export function debounce(func: Function, wait: number) {
  */
 export const replaceHttpToHttps = (url: string) =>
     url.replace(/http\:/, "https:");
+
+export const transitionCount = (Count: number) => {
+    if (Count > 100000000) {
+        return (Count / 100000000).toFixed(2) + "亿";
+    }
+    if (Count > 10000) {
+        return (Count / 10000).toFixed(2) + "万";
+    }
+    return Count;
+};

@@ -1,0 +1,58 @@
+.selectList {
+    margin-top: 50px;
+    width: 100%;
+    :global {
+        .active {
+            background-color: #eaeffd !important;
+            color: #335eea;
+        }
+        .selectItem {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 8px 16px;
+            width: fit-content;
+            border-radius: 8px;
+            font-weight: 800;
+            background-color: #f5f5f7;
+            margin: 0 0 20px 20px;
+            &:hover {
+                background-color: #eaeffd;
+                color: #335eea;
+            }
+        }
+    }
+    .conceal {
+        border-radius: 8px;
+        background-color: #f5f5f7;
+        padding: 20px 20px;
+        :global {
+            .BigItem {
+                display: flex;
+                justify-content: flex-start;
+                margin-bottom: 10px;
+            }
+            .right {
+                flex: 1;
+            }
+            .title {
+                width: 80px;
+                font-size: x-large;
+                font-weight: 800;
+            }
+            .Item {
+                display: inline-block;
+                padding: 8px 16px;
+                margin: 0 10px 10px 10px;
+                border-radius: 8px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #eaeffd;
+                    color: #335eea;
+                }
+            }
+        }
+    }
+}

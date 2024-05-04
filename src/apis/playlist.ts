@@ -109,3 +109,19 @@ export interface UserSonglistRes {
 export const userPlaylist = (id: number | string) => {
     return ajax<UserSonglistRes>(`/user/playlist?uid=${id}`);
 };
+
+export interface Tagplaylist {
+    playlists: {
+        id: number;
+        name: string;
+        description: string;
+        playCount: number;
+        coverImgUrl: string;
+        trackCount: number;
+    }[];
+}
+export const getTagPlaylist = (category: string, offset = 1, limit = 30) => {
+    return ajax(
+        `/top/playlist?cat=${category}&offset=${offset}&limit=${limit}`
+    );
+};
