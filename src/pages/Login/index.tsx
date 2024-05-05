@@ -1,13 +1,23 @@
 import { memo, useEffect, useState } from "react";
 import View from "./View";
 import { emailLogin, phoneLogin } from "@/apis/login";
-import { replaceHttpToHttps as rp } from "@/utils";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import { changeInfo, selectUserIfo } from "@/store/userInfo";
+import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
 
+interface UserInfo {
+    name: string | null;
+    avatar: string | null;
+}
 const Login = () => {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");
-    const [loginType, setLoginType] = useState<number>(2);
-
+    const [loginType, setLoginType] = useState<number>(0);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const userInfo = useAppSelector(selectUserIfo);
+    const [IsLogin, setIsLogin] = useState(false);
     const handLogin = async () => {
         return;
         // // 无效输入
@@ -60,14 +70,49 @@ const Login = () => {
 
         // onCancel();
     };
+    useEffect(() => {
+        if (userInfo.avatar && userInfo.name) {
+            setIsLogin(true);
+            navigate("/Discovery");
+        }
+    }, []);
+
     return (
-        <View
-            handLogin={handLogin}
-            setAccount={(value: string) => setAccount(value)}
-            setPassword={(value: string) => setPassword(value)}
-            setLoginType={(value: number) => setLoginType(value)}
-            loginType={loginType}
-        ></View>
+        <>
+            <View
+                handLogin={handLogin}
+                setAccount={(value: string) => setAccount(value)}
+                setPassword={(value: string) => setPassword(value)}
+                setLoginType={(value: number) => setLoginType(value)}
+                setUserInfo={({ name, avatar }: UserInfo) => {
+                    dispatch(changeInfo({ name, avatar }));
+                    setIsLogin(true);
+                    navigate("/Discovery");
+                }}
+                loginType={loginType}
+            ></View>
+            {IsLogin && (
+                <div
+                    style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
+                    <Alert
+                        sx={{
+                            position: "absolute",
+                            top: "70px",
+                            margin: "auto",
+                        }}
+                        variant="filled"
+                        severity="success"
+                    >
+                        您已登录成功
+                    </Alert>
+                </div>
+            )}
+        </>
     );
 };
 export default memo(Login);

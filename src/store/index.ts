@@ -1,8 +1,8 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import songSliceReducer from "./songSlice";
-
+import userInfoSliceReducer from "./userInfo";
 export const store = configureStore({
-    reducer: { song: songSliceReducer },
+    reducer: { song: songSliceReducer, userInfo: userInfoSliceReducer },
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

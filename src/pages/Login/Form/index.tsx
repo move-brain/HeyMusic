@@ -18,12 +18,12 @@ const Form = ({ setAccount, setPassword, loginType, handLogin }: Props) => {
                 onChange={setAccount}
                 Icon={loginType == 1 ? <EmailIcon /> : <PhoneAndroidIcon />}
                 // placeholder={loginType == 1 ? "邮箱" : "网易云后台出了问题无法实现登录"}
-                placeholder="网易云后台出了问题无法实现登录"
+                placeholder="网易云后台出了问题无法实现账密登录"
             />
             <div style={{ height: "20px" }}></div>
 
             <Input
-                placeholder="密码"
+                placeholder="无法实现账密登录"
                 onChange={setPassword}
                 Icon={<LockIcon />}
                 type="password"

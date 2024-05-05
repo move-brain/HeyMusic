@@ -1,12 +1,18 @@
 import { memo } from "react";
 import styles from "./index.module.scss";
 import Form from "../Form";
+import ScanQR from "../ScanQR";
+interface UserInfo {
+    name: string | null;
+    avatar: string | null;
+}
 interface Props {
     setPassword: (value: string) => void;
     setAccount: (value: string) => void;
     setLoginType: (value: number) => void;
     loginType: number;
     handLogin: () => Promise<void>;
+    setUserInfo: ({ name, avatar }: UserInfo) => void;
 }
 
 const View = ({
@@ -15,6 +21,7 @@ const View = ({
     setLoginType,
     loginType,
     handLogin,
+    setUserInfo,
 }: Props) => {
     return (
         <div className={styles.View}>
@@ -24,12 +31,16 @@ const View = ({
                 alt=""
             />
             <span className="title">登录网易云账号</span>
-            <Form
-                handLogin={handLogin}
-                loginType={loginType}
-                setAccount={setAccount}
-                setPassword={setPassword}
-            />
+            {!loginType ? (
+                <ScanQR setUserInfo={setUserInfo} />
+            ) : (
+                <Form
+                    handLogin={handLogin}
+                    loginType={loginType}
+                    setAccount={setAccount}
+                    setPassword={setPassword}
+                />
+            )}
             <div
                 style={{ color: loginType == 0 ? "#335eea" : "" }}
                 onClick={() => setLoginType(0)}

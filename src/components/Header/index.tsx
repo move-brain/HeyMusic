@@ -8,37 +8,31 @@ import Navigation from "./Navigation";
 import Tabs from "./Tabs";
 import { useLocation } from "react-router-dom";
 import Avatar from "./Avatar";
-
-interface UserInfo {
-    name: string | null;
-    avatar: string | null;
-}
-
+import { selectUserIfo, changeInfo } from "@/store/userInfo";
+import { useAppDispatch, useAppSelector } from "@/store/hook";
+import { useNavigate } from "react-router-dom";
 function Header() {
     const { pathname } = useLocation();
-    const [userInfo, setUserInfo] = useState<UserInfo>({
-        name: null,
-        avatar: null,
-    });
-    const [visible, setVisible] = useState(false);
+    const userInfo = useAppSelector(selectUserIfo);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // token 未过期
         if (getCookie()) {
             const name = window.localStorage.getItem("username");
             const avatar = window.localStorage.getItem("avatar");
             if (name && avatar) {
-                setUserInfo({ name, avatar });
+                dispatch(changeInfo({ name, avatar }));
             }
         }
     }, []);
 
     const toggleVisible = () => {
         // 已登录
-        if (userInfo.name !== null) {
+        if (userInfo.name !== "") {
             return;
         }
-        setVisible(!visible);
+        navigate("/Login");
     };
 
     // 退出登录
@@ -46,7 +40,7 @@ function Header() {
         const result = await logout();
         if (result.code === 200) {
             window.localStorage.clear();
-            setUserInfo({ name: null, avatar: null });
+            dispatch(changeInfo({ name: null, avatar: null }));
         }
     };
 
@@ -57,19 +51,14 @@ function Header() {
             <div className="serAndavatar">
                 <Search />
                 <Avatar
+                    onclick={toggleVisible}
                     avatar={
                         userInfo.avatar
                             ? userInfo.avatar
-                            : "src/assets/musician.png"
+                            : "https://s2.loli.net/2024/05/05/jJignK7eVA1S68T.png"
                     }
                 />
             </div>
-            {visible && (
-                <LoginModal
-                    onCancel={toggleVisible}
-                    setUserInfo={setUserInfo}
-                />
-            )}
         </div>
     );
 }

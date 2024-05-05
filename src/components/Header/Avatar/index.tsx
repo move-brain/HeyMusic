@@ -1,12 +1,16 @@
 import { memo } from "react";
 interface Props {
     avatar: string;
+    onclick: () => void;
 }
-const Avatar = ({ avatar }: Props) => {
+const Avatar = ({ avatar, onclick }: Props) => {
     return (
-        <div>
-            <img src={avatar} loading="lazy" className="avatar-image" />
-        </div>
+        <img
+            onClick={onclick}
+            src={avatar}
+            loading="lazy"
+            className="avatar-image"
+        />
     );
 };
 export default memo(Avatar);
