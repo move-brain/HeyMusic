@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState, useCallback, useMemo } from "react";
 import style from "./index.module.scss";
 import { useInterval } from "@/utils/hooks";
 import music from "@/utils/music";
@@ -18,66 +18,85 @@ function MusicPlayer() {
     const [Isclick, setIsclick] = useState<boolean>(false);
     const { isPlaying, playMode, playlist, playingItem, isLoading } = song;
     const [IsShow, setShow] = useState(false);
-    // 每 300 ms 更新一次当前播放时间
 
+    // Memoized values
+    const memoizedPlayingItem = useMemo(() => playingItem, [playingItem]);
+    const memoizedIsLoading = useMemo(() => isLoading, [isLoading]);
+
+    // Callbacks
+    const handlePlayOrPause = useCallback(
+        debounce(() => {
+            if (isPlaying) {
+                dispatch(pauseSong());
+            } else {
+                dispatch(
+                    playSong({ item: memoizedPlayingItem, offset: currentTime })
+                );
+            }
+        }, 300),
+        [isPlaying, memoizedPlayingItem, currentTime, dispatch]
+    );
+
+    const ChanageDuration = useCallback(
+        debounce((event: Event, value?: number) => {
+            const target = event.target as HTMLInputElement;
+            setCurrentTime(Number(target.value));
+            setIsclick(true);
+            dispatch(
+                playSong({
+                    item: memoizedPlayingItem,
+                    offset: Number(target.value),
+                })
+            );
+        }, 200),
+        [memoizedPlayingItem, dispatch]
+    );
+
+    const ShowMusic = useCallback((bool: boolean) => {
+        setShow(bool);
+    }, []);
+
+    // Effects
     useInterval(() => {
         const time = music().getCurrentTime();
         !Isclick && setCurrentTime(time);
     }, 100);
 
     useEffect(() => {
-        if (!isLoading) {
+        if (!memoizedIsLoading) {
             setIsclick(false);
         }
-    }, [isLoading]);
+    }, [memoizedIsLoading]);
 
-    const ChanageDuration = debounce((event: Event, value?: number) => {
-        // @ts-ignore
-        setCurrentTime(event.target.value);
-        setIsclick(true);
-        // @ts-ignore
-        dispatch(playSong({ item: playingItem, offset: event.target.value }));
-    }, 200);
-
-    const handlePlayOrPause = debounce(() => {
-        if (isPlaying) {
-            dispatch(pauseSong());
-        } else {
-            dispatch(playSong({ item: playingItem, offset: currentTime }));
-        }
-    }, 300);
-
-    const ShowMusic = (bool: boolean) => {
-        setShow(bool);
-    };
     return (
         <div className={style["music-player"]}>
             <ProgressBar
-                playingItem={playingItem}
+                playingItem={memoizedPlayingItem}
                 currentTime={currentTime}
-                isLoading={isLoading}
+                isLoading={memoizedIsLoading}
                 ChanageDuration={ChanageDuration}
             />
             <div className={style.MusicPlayerBottom}>
                 <div className={style.info_button}>
-                    <SongInformation playingItem={playingItem} />
+                    <SongInformation playingItem={memoizedPlayingItem} />
                     <ControlButton handlePlayOrPause={handlePlayOrPause} />
                     <OtherButton
                         isPlaying={isPlaying}
-                        playingItem={playingItem}
+                        playingItem={memoizedPlayingItem}
                         playlist={playlist}
-                        //@ts-ignore
-                        playMode={playMode}
+                        playMode={
+                            playMode as "list-loop" | "random" | "single-cycle"
+                        }
                         currentTime={currentTime}
                         ShowMusic={ShowMusic}
                     />
                 </div>
                 <MusicDrawer
-                    isLoading={isLoading}
+                    isLoading={memoizedIsLoading}
                     handlePlayOrPause={handlePlayOrPause}
                     ShowMusic={ShowMusic}
                     IsShow={IsShow}
-                    playingItem={playingItem}
+                    playingItem={memoizedPlayingItem}
                     currentTime={currentTime}
                     ChanageDuration={ChanageDuration}
                 />

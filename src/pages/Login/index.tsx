@@ -6,10 +6,7 @@ import { changeInfo, selectUserIfo } from "@/store/userInfo";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 
-interface UserInfo {
-    name: string | null;
-    avatar: string | null;
-}
+import { UserInfo } from "@/types/global";
 const Login = () => {
     const [account, setAccount] = useState("");
     const [password, setPassword] = useState("");

@@ -2,10 +2,7 @@ import { useEffect, useState, memo } from "react";
 import { getLoginQR, checkLoginQR, loginStatus } from "@/apis/login";
 import { useInterval } from "@/utils/hooks";
 import { Toast } from "@/components";
-interface UserInfo {
-    name: string | null;
-    avatar: string | null;
-}
+import { UserInfo } from "@/types/global";
 interface Props {
     setUserInfo: ({ name, avatar }: UserInfo) => void;
 }

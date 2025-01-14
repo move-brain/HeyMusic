@@ -1,16 +1,24 @@
-import "./app.css";
+import { StrictMode } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter } from "react-router-dom";
-import AppContainer from "./containers";
 import { Provider } from "react-redux";
 import { store } from "@/store/index";
+import AppContainer from "@/containers";
+import GlobalStyles from "@/styles/GlobalStyles";
+import ErrorFallback from "@/components/ErrorFallback";
 
 function App() {
     return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <AppContainer />
-            </BrowserRouter>
-        </Provider>
+        <StrictMode>
+            <Provider store={store}>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <GlobalStyles />
+                    <BrowserRouter>
+                        <AppContainer />
+                    </BrowserRouter>
+                </ErrorBoundary>
+            </Provider>
+        </StrictMode>
     );
 }
 

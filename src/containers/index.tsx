@@ -1,4 +1,4 @@
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, useCallback, useMemo, memo } from "react";
 import music from "@/utils/music";
 import { Layout } from "@/components";
 import { palynextSong, selectSong } from "@/store/songSlice";
@@ -13,18 +13,25 @@ function AppContainer() {
     const song = useAppSelector(selectSong);
     const { playingItem } = song;
     const elements = useRoutes(routes);
+    const handleEnded = useCallback(() => {
+        dispacth(palynextSong("next"));
+    }, [dispacth]);
+
     useEffect(() => {
-        music().setOnEnded(() => {
-            // 播放下一首歌曲
-            dispacth(palynextSong("next"));
-        });
-    }, [playingItem]);
+        const player = music();
+        player.setOnEnded(handleEnded);
+        return () => {
+            player.setOnEnded(() => {});
+        };
+    }, [handleEnded, playingItem]);
+
+    const memoizedElements = useMemo(() => elements, [elements]);
 
     return (
         <Layout>
-            <Suspense fallback={<Loading />}>{elements}</Suspense>
+            <Suspense fallback={<Loading />}>{memoizedElements}</Suspense>
         </Layout>
     );
 }
 
-export default AppContainer;
+export default memo(AppContainer);
