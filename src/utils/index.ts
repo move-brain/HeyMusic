@@ -1,7 +1,6 @@
 export const getCookie = () => {
     // 过期时间
     // const timestampBefore = Number(localStorage.getItem('timestampBefore'));
-
     // // 已过期
     // if (Date.now() >= timestampBefore) {
     //     localStorage.removeItem('timestampBefore');

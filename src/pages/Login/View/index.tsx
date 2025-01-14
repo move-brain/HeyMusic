@@ -2,6 +2,8 @@ import { memo } from "react";
 import styles from "./index.module.scss";
 import Form from "../Form";
 import ScanQR from "../ScanQR";
+//@ts-ignore
+import musicSvg from "../../../assets/musicSvg.png";
 interface UserInfo {
     name: string | null;
     avatar: string | null;
@@ -25,11 +27,7 @@ const View = ({
 }: Props) => {
     return (
         <div className={styles.View}>
-            <img
-                className="image"
-                src="src\assets\网易云音乐_爱给网_aigei_com.png"
-                alt=""
-            />
+            <img className="image" src={musicSvg} alt="" />
             <span className="title">登录网易云账号</span>
             {!loginType ? (
                 <ScanQR setUserInfo={setUserInfo} />

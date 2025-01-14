@@ -26,7 +26,6 @@ const PlayListItem = ({
     cover,
 }: Props) => {
     const [isHover, setIsHover] = useState(false);
-
     return (
         <div
             style={{ color: !isFree ? "#b8b8b8" : "black" }}

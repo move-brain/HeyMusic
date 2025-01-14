@@ -13,6 +13,19 @@ const User = lazy(() => import("./pages/User"));
 const Video = lazy(() => import("./pages/Video"));
 const Login = lazy(() => import("./pages/Login"));
 const Explore = lazy(() => import("./pages/Explore"));
+// import Album from "./pages/Album";
+// import Discovery from "./pages/Discovery";
+// import MySongList from "./pages/MySongList";
+// import NextList from "./pages/NextList";
+// import PersonalFM from "./pages/PersonalFM";
+// import Playlist from "./pages/Playlist";
+// import Search from "./pages/Search";
+// import Singer from "./pages/Singer";
+// import Song from "./pages/Song";
+// import User from "./pages/User";
+// import Video from "./pages/Video";
+// import Login from "./pages/Login";
+// import Explore from "./pages/Explore";
 
 export default [
     {

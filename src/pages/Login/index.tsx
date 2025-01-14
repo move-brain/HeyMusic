@@ -26,8 +26,6 @@ const Login = () => {
         // }
         // // 登录类型
         // let res;
-        // console.log(/^1[3-9]\d{9}$/.test(account), password);
-
         // if (loginType == 1 && /^[\w-.]+@[\w-.]+\.\w+$/.test(account)) {
         //     res = await emailLogin(account, password);
         // } else if (loginType == 2 && /^1[3-9]\d{9}$/.test(account)) {
@@ -36,7 +34,6 @@ const Login = () => {
         //     // Toast.show("账号类型有误");
         //     return;
         // }
-        // console.log(res);
 
         // // 昵称
         // window.localStorage.setItem("username", res.profile.nickname);

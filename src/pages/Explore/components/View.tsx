@@ -2,6 +2,7 @@ import style from "./View.module.scss";
 import SelectList from "./SelectList";
 import { Tagplaylist } from "@/apis/playlist";
 import PlayLists from "./PlayLists";
+import { useRef } from "react";
 interface Props {
     Playlist: Tagplaylist["playlists"] | [];
     category: string;

@@ -34,11 +34,8 @@ function Playlist() {
 
         const getData = async () => {
             const detailRes = await playlistDetail(id as string);
-
             // 详情
             const detail = resolveDetail(detailRes);
-            console.log(detail);
-
             // 所有歌曲 id
             const songIds = detailRes.playlist.trackIds.map(({ id }) => id);
             // 评论

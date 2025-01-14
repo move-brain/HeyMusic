@@ -10,7 +10,7 @@ import {
     playlistDetail,
 } from "@/apis/playlist";
 import { setPlaylist, playSong, commitPlaying } from "@/store/songSlice";
-const explore = () => {
+const Explore = () => {
     const category = useQuery("category") || "全部";
     const [Playlist, setPlaylists] = useState<Tagplaylist["playlists"] | []>(
         []
@@ -37,14 +37,16 @@ const explore = () => {
 
     const getMore = async () => {
         const playlist = await getTagPlaylist(category, offset);
-        setPlaylists([...Playlist, ...playlist.playlists]);
+        const { playlists } = playlist;
+        setPlaylists([...Playlist, ...playlists]);
         setOffset((offset) => offset + 50);
     };
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
             const playlist = await getTagPlaylist(category);
-            setPlaylists(playlist.playlists);
+            const { playlists } = playlist;
+            setPlaylists(playlists);
             setIsLoading(false);
         };
         getData();
@@ -59,4 +61,4 @@ const explore = () => {
         />
     );
 };
-export default explore;
+export default Explore;

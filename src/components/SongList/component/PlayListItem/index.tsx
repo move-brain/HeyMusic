@@ -62,4 +62,6 @@ const PlayListItem = ({ data }: Props) => {
     );
 };
 
-export default memo(PlayListItem);
+export default memo(PlayListItem, (prevProps, nextProps) => {
+    return prevProps.data.id === nextProps.data.id; // 根据唯一 ID 判断是否需要重新渲染
+});

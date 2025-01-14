@@ -1,16 +1,16 @@
-import { useState, useEffect, memo } from "react";
+import { useEffect, memo } from "react";
 import style from "./index.module.scss";
 import { getCookie } from "@/utils";
 import { logout } from "@/apis/login";
-import LoginModal from "./LoginModal";
 import Search from "./Search";
 import Navigation from "./Navigation";
 import Tabs from "./Tabs";
-import { useLocation } from "react-router-dom";
 import Avatar from "./Avatar";
 import { selectUserIfo, changeInfo } from "@/store/userInfo";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+//@ts-ignore
+import nologin from "../../assets/favicon.png";
 function Header() {
     const { pathname } = useLocation();
     const userInfo = useAppSelector(selectUserIfo);
@@ -52,11 +52,7 @@ function Header() {
                 <Search />
                 <Avatar
                     onclick={toggleVisible}
-                    avatar={
-                        userInfo.avatar
-                            ? userInfo.avatar
-                            : "https://s2.loli.net/2024/05/05/jJignK7eVA1S68T.png"
-                    }
+                    avatar={userInfo.avatar ? userInfo.avatar : nologin}
                 />
             </div>
         </div>

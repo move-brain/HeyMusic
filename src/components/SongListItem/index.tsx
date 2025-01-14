@@ -17,8 +17,6 @@ interface Props {
 }
 const SongList = ({ data }: Props) => {
     const { id, name, singers, isFree, cover } = data;
-    console.log(cover);
-
     return (
         <div
             style={{ color: !isFree ? "#b8b8b8" : "black" }}

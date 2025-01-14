@@ -30,7 +30,6 @@ const ajax = async <T = any>(
         ...baseParams,
         ...params,
     }).catch((err) => {
-        console.log("ajax error", err);
         Toast.show("请求失败");
         return null;
     });

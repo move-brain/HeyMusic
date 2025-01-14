@@ -9,8 +9,6 @@ const userInfoSlice = createSlice({
     },
     reducers: {
         changeInfo: (state, action) => {
-            console.log(state);
-
             state.name = action.payload.name;
             state.avatar = action.payload.avatar;
         },

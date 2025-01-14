@@ -2,7 +2,6 @@ import style from "./index.module.scss";
 import { Link } from "react-router-dom";
 import SquareImg from "@/components/SquareImg";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
-import { IconButton } from "@mui/material";
 import type { MouseEvent } from "react";
 import { transitionCount } from "@/utils/index";
 interface Props {

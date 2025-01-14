@@ -18,7 +18,6 @@ export interface PageState {
 
 function Album() {
     const id = useQuery("id");
-
     const [pageState, setPageState] = useState<PageState | null>(null);
 
     useEffect(() => {

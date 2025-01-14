@@ -16,7 +16,7 @@ function View({ pageState }: Props) {
     const { isCreator } = detail;
     return (
         <div className={style.playlist}>
-            <Detail data={{ detail, songIds }} />
+            {/* <Detail data={{ detail, songIds }} /> */}
             <SongList songIds={songIds} isCreator={isCreator} />
             {/* <CommentList data={comment} /> */}
         </div>

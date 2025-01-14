@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from "react";
 import { getLoginQR, checkLoginQR, loginStatus } from "@/apis/login";
-import { replaceHttpToHttps as rp } from "@/utils";
 import { useInterval } from "@/utils/hooks";
+import { Toast } from "@/components";
 interface UserInfo {
     name: string | null;
     avatar: string | null;
@@ -55,19 +55,27 @@ const ScanQR = ({ setUserInfo }: Props) => {
                 });
             }
             const sRes = await loginStatus(cookie);
-
-            // 昵称
-            window.localStorage.setItem("username", sRes.data.profile.nickname);
-            // 头像
-            window.localStorage.setItem("avatar", sRes.data.profile.avatarUrl);
-            // 用户 id
-            window.localStorage.setItem("userid", sRes.data.profile.userId);
-            // token
-            window.localStorage.setItem("cookie", cookie);
-            setUserInfo({
-                name: sRes.data.profile.nickname,
-                avatar: sRes.data.profile.avatarUrl,
-            });
+            if (sRes.data.profile) {
+                window.localStorage.setItem(
+                    "username",
+                    sRes.data.profile.nickname
+                );
+                // 头像
+                window.localStorage.setItem(
+                    "avatar",
+                    sRes.data.profile.avatarUrl
+                );
+                // 用户 id
+                window.localStorage.setItem("userid", sRes.data.profile.userId);
+                // token
+                window.localStorage.setItem("cookie", cookie);
+                setUserInfo({
+                    name: sRes.data.profile.nickname,
+                    avatar: sRes.data.profile.avatarUrl,
+                });
+            } else {
+                Toast.show("后端问题，登录失败，明天再来");
+            }
         }
     }, delay);
     return (

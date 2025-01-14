@@ -1,4 +1,11 @@
-import { Fragment, useState, useEffect, memo } from "react";
+import {
+    Fragment,
+    useState,
+    useEffect,
+    memo,
+    useRef,
+    useCallback,
+} from "react";
 import style from "./index.module.scss";
 import Loading from "@/components/Loading";
 import Toast from "@/components/Toast";
@@ -12,7 +19,7 @@ import { playSong, selectSong, setPlaylist } from "@/store/songSlice/index";
 import PlayListItem from "./component/PlayListItem";
 import AlbumListItem from "./component/AlbumListItem";
 import type { SongItem } from "@/store/songSlice/types";
-
+import { throttle } from "lodash";
 interface Props {
     songList?: SongItem[];
     isCreator?: boolean;
@@ -29,7 +36,16 @@ function SongList({ songList, songIds, isCreator, album }: Props) {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [visible, setVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState<SongItem | null>(null);
-
+    const SongListRef = useRef<HTMLDivElement | null>(null);
+    const AlbumListItemRef = useRef<HTMLDivElement | null>(null);
+    const ItemHei = 70;
+    const containerHei = 3 * window.innerHeight;
+    const visibleItemCount = Math.ceil(containerHei / ItemHei);
+    const [startIndex, setStartIndex] = useState(0);
+    const [endIndex, setEndIndex] = useState(startIndex + visibleItemCount);
+    const [list, setList] = useState<SongItem[] | []>([]);
+    const listHeight = currentList.length * ItemHei;
+    const startOffset = startIndex * ItemHei;
     //添加到播放列表
     const handleAddToPlaylist = (songItem: SongItem) => {
         // 播放列表中已有该歌曲
@@ -89,12 +105,11 @@ function SongList({ songList, songIds, isCreator, album }: Props) {
         // 根据分页加载数据
         const getData = async () => {
             setCurrentList([]);
-            const start = (currentPage - 1) * 50;
-            const ids = songIds!.slice(start, start + 50);
-            const songRes = await songDetail(ids);
-            console.log(songRes);
-
-            setCurrentList(resolveSongs(songRes.songs, "detail"));
+            // const start = (currentPage - 1) * 50;
+            // const ids = songIds!.slice(start, start + 50);
+            const songRes = await songDetail(songIds!);
+            const { songs } = songRes;
+            setCurrentList(resolveSongs(songs, "detail"));
         };
 
         if (songIds) {
@@ -102,43 +117,89 @@ function SongList({ songList, songIds, isCreator, album }: Props) {
         }
     }, [songIds, currentPage]);
 
-    if (currentList.length === 0) {
-        return <Loading />;
-    }
+    useEffect(() => {
+        if (!currentList.length) {
+            return;
+        }
+        setList(currentList.slice(startIndex, endIndex));
+    }, [currentList]);
+
+    useEffect(() => {
+        setList(
+            currentList.slice(
+                startIndex,
+                Math.min(currentList.length, startIndex + visibleItemCount)
+            )
+        );
+        setEndIndex(startIndex + visibleItemCount);
+    }, [startIndex]);
+
+    const handleScroll = () => {
+        if (!SongListRef.current) {
+            return;
+        }
+        const scrollTop = SongListRef.current?.scrollTop - window.innerHeight;
+        if (scrollTop < 0) {
+            setStartIndex(0);
+            return;
+        }
+        setStartIndex(Math.floor(scrollTop! / ItemHei));
+    };
+    const debouncedHandleScroll = useCallback(throttle(handleScroll, 50), []);
+    useEffect(() => {
+        SongListRef.current?.addEventListener("scroll", debouncedHandleScroll);
+        return () => {
+            SongListRef.current?.removeEventListener(
+                "scroll",
+                debouncedHandleScroll
+            );
+        };
+    }, [debouncedHandleScroll]);
 
     return (
-        <div className={style.songlist}>
-            {currentList.map((item, index) => {
-                const {
-                    id,
-                    name,
-                    singers,
-                    duration,
-                    isFree,
-                    albumId,
-                    albumName,
-                    cover,
-                } = item;
-                return (
-                    <div key={id}>
-                        {!album ? (
-                            <PlayListItem data={item} />
-                        ) : (
-                            <AlbumListItem
-                                Idx={index + 1}
-                                id={id}
-                                name={name}
-                                singers={singers}
-                                duration={duration}
-                                isFree={isFree}
-                                albumId={albumId}
-                                albumName={albumName}
-                                cover={cover}
-                            />
-                        )}
-                    </div>
-                );
-            })}
+        <div ref={SongListRef} className={style.songlist}>
+            <div
+                className={style.phantom}
+                style={{ height: listHeight + "px" }}
+            ></div>
+
+            {list.length === 0 ? (
+                <Loading />
+            ) : (
+                <div style={{ transform: `translate3d(0,${startOffset}px,0)` }}>
+                    {list.map((item, index) => {
+                        const {
+                            id,
+                            name,
+                            singers,
+                            duration,
+                            isFree,
+                            albumId,
+                            albumName,
+                            cover,
+                        } = item;
+                        return (
+                            <div key={id}>
+                                {!album ? (
+                                    <PlayListItem data={item} />
+                                ) : (
+                                    <AlbumListItem
+                                        Idx={index + 1}
+                                        id={id}
+                                        name={name}
+                                        singers={singers}
+                                        duration={duration}
+                                        isFree={isFree}
+                                        albumId={albumId}
+                                        albumName={albumName}
+                                        cover={cover}
+                                    />
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
             {/* <Pagination
                 currentPage={currentPage}
                 total={songIds?.length || 0}

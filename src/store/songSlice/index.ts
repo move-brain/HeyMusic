@@ -83,9 +83,6 @@ const songSlice = createSlice({
             music().pause();
             state.isPlaying = false;
         },
-        test: () => {
-            console.log("成功");
-        },
         setPlaylist: (state, action: PayloadAction<SongItem[]>) => {
             state.playlist = action.payload;
         },

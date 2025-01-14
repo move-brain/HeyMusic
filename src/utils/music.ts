@@ -137,7 +137,6 @@ class Music {
                         getLyric(id), //  获取歌词
                     ]).then(([buffer, detailRes, lyricRes]) => {
                         if (buffer === null) {
-                            console.log("get music fail, id:", id);
                             resolve(null);
                             return;
                         }

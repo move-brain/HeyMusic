@@ -23,9 +23,7 @@ function Singer() {
     const id = useQuery("id");
 
     const [pageState, setPageState] = useState<PageState | null>(null);
-    const onPlayAll = async (id: number) => {
-        console.log(id);
-    };
+    const onPlayAll = async (id: number) => {};
     useEffect(() => {
         if (!id) {
             return;
@@ -38,7 +36,6 @@ function Singer() {
                 singerAlbum(id as string),
                 singerMvs(id),
             ]).then((res) => {
-                console.log(res[0]);
                 setPageState({
                     header:
                         res[0].status == "fulfilled"

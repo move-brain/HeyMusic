@@ -11,9 +11,11 @@ interface Props {
     getMore: () => Promise<void>;
 }
 const PlayLists = ({ Playlist, onPlayAll, IsLoading, getMore }: Props) => {
-    if (PlayLists.length === 0 || IsLoading) {
+    if (Playlist.length === 0 || IsLoading) {
         return <Loading />;
     }
+    console.log(Playlist);
+
     return (
         <>
             <div className={style.PlayLists}>
@@ -30,9 +32,11 @@ const PlayLists = ({ Playlist, onPlayAll, IsLoading, getMore }: Props) => {
                 ))}
             </div>
             <div className={style.bottomButton}>
-                <PlayButton width="200px" text="加载更多" ClickButton={getMore}>
-                    <div></div>
-                </PlayButton>
+                <PlayButton
+                    width="200px"
+                    text="加载更多"
+                    ClickButton={getMore}
+                ></PlayButton>
             </div>
         </>
     );

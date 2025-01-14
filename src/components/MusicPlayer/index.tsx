@@ -32,7 +32,6 @@ function MusicPlayer() {
     }, [isLoading]);
 
     const ChanageDuration = debounce((event: Event, value?: number) => {
-        console.log(value);
         // @ts-ignore
         setCurrentTime(event.target.value);
         setIsclick(true);
@@ -51,7 +50,6 @@ function MusicPlayer() {
     const ShowMusic = (bool: boolean) => {
         setShow(bool);
     };
-
     return (
         <div className={style["music-player"]}>
             <ProgressBar

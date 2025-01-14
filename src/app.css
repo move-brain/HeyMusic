@@ -6,6 +6,7 @@ body {
     color: rgba(0, 0, 0, 0.8);
     --primary-color: #c62f2f;
     overflow: hidden;
+    min-width: 1000px;
 }
 img {
     object-fit: cover;
